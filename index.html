@@ -105,7 +105,7 @@
         .delay-2 { transition-delay: 0.4s; }
         .delay-3 { transition-delay: 0.6s; }
 
-        /* --- UPDATED 3D SYSTEM ANIMATION (LARGER) --- */
+        /* --- 3D SYSTEM ANIMATION (MOBILE RESPONSIVE SCALE) --- */
         :root {
             --neon-blue: #4f46e5;
             --neon-purple: #bc13fe;
@@ -115,23 +115,40 @@
         }
 
         .animation-container {
-            width: 100%; height: 600px;
+            width: 100%; height: 300px; /* Smaller height for mobile */
             perspective: 2500px;
             display: flex; justify-content: center; align-items: center;
+        }
+
+        @media (min-width: 1024px) {
+            .animation-container { height: 600px; }
         }
 
         .viewport {
             position: relative;
             width: 100%; height: 100%;
             transform-style: preserve-3d;
-            transform: rotateX(20deg) rotateY(-15deg) scale(0.8); /* INCREASED SCALE */
+            transform: rotateX(20deg) rotateY(-15deg) scale(0.4); /* Much smaller for mobile */
             animation: cinematicMove 20s infinite alternate ease-in-out;
         }
 
-        @keyframes cinematicMove {
-            from { transform: rotateX(15deg) rotateY(-20deg) scale(0.75); }
-            to { transform: rotateX(25deg) rotateY(15deg) scale(0.85); }
+        @media (min-width: 768px) {
+            .viewport { scale: 0.6; }
         }
+
+        @media (min-width: 1024px) {
+            .viewport { scale: 0.85; }
+        }
+
+        @keyframes cinematicMove {
+            from { transform: rotateX(15deg) rotateY(-20deg) scale(var(--scale-from, 0.4)); }
+            to { transform: rotateX(25deg) rotateY(15deg) scale(var(--scale-to, 0.45)); }
+        }
+        
+        /* CSS Variables to handle responsive scaling in animation */
+        :root { --scale-from: 0.4; --scale-to: 0.45; }
+        @media (min-width: 768px) { :root { --scale-from: 0.55; --scale-to: 0.6; } }
+        @media (min-width: 1024px) { :root { --scale-from: 0.75; --scale-to: 0.85; } }
 
         .orbit-ring {
             position: absolute; top: 50%; left: 50%;
@@ -158,8 +175,8 @@
 
         .hub {
             position: absolute; top: 50%; left: 50%;
-            transform: translate(-50%, -50%) translateZ(150px); /* PUSHED FORWARD MORE */
-            width: 380px; height: 240px; /* BIGGER HUB */
+            transform: translate(-50%, -50%) translateZ(150px);
+            width: 380px; height: 240px;
             background: var(--glass); border: 1.5px solid var(--border);
             border-radius: 20px; backdrop-filter: blur(30px); padding: 25px;
             box-shadow: 0 70px 130px rgba(0,0,0,0.6);
@@ -173,19 +190,17 @@
             animation: float 6s infinite ease-in-out;
             transition: 0.3s;
         }
-        .btn-system:hover { background: var(--neon-purple); box-shadow: 0 0 30px var(--neon-purple); transform: translateZ(200px) scale(1.1); }
 
         @keyframes float {
             0%, 100% { transform: translateZ(200px) translateY(0); }
             50% { transform: translateZ(240px) translateY(-20px); }
         }
 
-        /* Responsive nav */
-        .nav-container {
-            background: rgba(17, 24, 39, 0.6); backdrop-blur: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.08); padding: 0.75rem 1.25rem;
-            border-radius: 9999px; display: flex; gap: 1.25rem; font-size: 0.65rem;
+        /* Nav responsive spacing */
+        .nav-link-container {
+            display: flex; gap: 0.75rem;
         }
+        @media (min-width: 768px) { .nav-link-container { gap: 1.5rem; } }
     </style>
 </head>
 <body class="loading">
@@ -210,19 +225,21 @@
 
     <div id="particles-js"></div>
 
-    <nav id="navbar" class="fixed top-6 md:top-8 w-full z-50 flex justify-center px-4 transition-transform duration-500 ease-in-out">
-        <div class="bg-gray-900/40 backdrop-blur-xl border border-white/10 px-6 py-3 rounded-full flex gap-6 text-[10px] md:text-xs uppercase tracking-widest font-bold text-gray-400 shadow-2xl">
-            <a href="index.html" class="text-indigo-400 transition-link">Home</a>
-            <a href="about.html" class="hover:text-indigo-400 transition transition-link">About</a>
-            <a href="#portfolio" class="hover:text-indigo-400 transition">Portfolio</a>
-            <a href="#contact" class="hover:text-indigo-400 transition">Contact</a>
+    <nav id="navbar" class="fixed top-4 md:top-8 w-full z-50 flex justify-center px-4 transition-transform duration-500 ease-in-out">
+        <div class="bg-gray-900/40 backdrop-blur-xl border border-white/10 px-4 md:px-8 py-3 md:py-4 rounded-full shadow-2xl">
+            <div class="nav-link-container text-[9px] md:text-xs uppercase tracking-widest font-bold text-gray-400">
+                <a href="index.html" class="text-indigo-400 transition-link">Home</a>
+                <a href="about.html" class="hover:text-indigo-400 transition transition-link">About</a>
+                <a href="#portfolio" class="hover:text-indigo-400 transition">Portfolio</a>
+                <a href="#contact" class="hover:text-indigo-400 transition">Contact</a>
+            </div>
         </div>
     </nav>
 
-    <header id="home" class="relative min-h-screen flex items-center px-6 md:px-8 max-w-7xl mx-auto pt-24 pb-12 lg:pt-20">
+    <header id="home" class="relative min-h-screen flex items-center px-4 md:px-8 max-w-7xl mx-auto pt-20 pb-12 lg:pt-20">
         <div class="hero-glow-back"></div>
         
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center w-full relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center w-full relative z-10">
             
             <div class="order-1 lg:order-2 flex justify-center hero-reveal delay-1 overflow-visible">
                 <div class="animation-container">
@@ -256,21 +273,21 @@
                             </div>
                         </div>
 
-                        <button class="btn-system" style="top: 10%; right: 5%;">Deployment_Live</button>
-                        <button class="btn-system" style="bottom: 15%; left: 0%;">Cloud_Nodes</button>
+                        <button class="btn-system" style="top: 10%; right: 5%;">Deployment</button>
+                        <button class="btn-system" style="bottom: 15%; left: 0%;">Nodes</button>
                     </div>
                 </div>
             </div>
 
             <div class="space-y-6 md:space-y-8 text-center lg:text-left order-2 lg:order-1">
                 <div class="space-y-2">
-                    <p class="text-indigo-500 font-bold text-xs md:text-sm tracking-[0.3em] uppercase hero-reveal">Nathan Fernando</p>
+                    <p class="text-indigo-500 font-bold text-[10px] md:text-sm tracking-[0.3em] uppercase hero-reveal">Nathan Fernando</p>
                     <h1 class="heading-font text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-none hero-reveal delay-1 text-glow">
                         Software <span class="shimmer-text">Engineer</span>
                     </h1>
                 </div>
 
-                <p class="max-w-xl mx-auto lg:mx-0 text-gray-400 text-sm md:text-lg leading-relaxed hero-reveal delay-2">
+                <p class="max-w-xl mx-auto lg:mx-0 text-gray-400 text-xs md:text-lg leading-relaxed hero-reveal delay-2">
                     Specializing in building robust digital solutions that bridge the gap between technical complexity and user-centric design.
                 </p>
 
@@ -282,8 +299,8 @@
                 </div>
 
                 <div class="flex flex-wrap justify-center lg:justify-start gap-3 md:gap-4 hero-reveal delay-3">
-                    <a href="#portfolio" class="bg-[#4f46e5] btn-responsive rounded-xl font-bold shadow-[0_0_15px_rgba(79,70,229,0.4)] hover:translate-y-[-3px] transition-all">View Projects</a>
-                    <a href="about.html" class="border border-white/10 bg-white/5 btn-responsive rounded-xl font-bold hover:bg-white/10 transition-all transition-link">About Me</a>
+                    <a href="#portfolio" class="bg-[#4f46e5] text-[10px] md:text-base px-5 md:px-8 py-2 md:py-3 rounded-xl font-bold shadow-[0_0_15px_rgba(79,70,229,0.4)] hover:translate-y-[-3px] transition-all">View Projects</a>
+                    <a href="about.html" class="border border-white/10 bg-white/5 text-[10px] md:text-base px-5 md:px-8 py-2 md:py-3 rounded-xl font-bold hover:bg-white/10 transition-all transition-link">About Me</a>
                 </div>
 
                 <div class="flex justify-center lg:justify-start gap-4 hero-reveal delay-3">
@@ -311,13 +328,12 @@
             }, 2500); 
         });
 
-        // Motion Blur Page Transition
         document.querySelectorAll('.transition-link').forEach(link => {
             link.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
                 if (href && href.includes('.html')) {
                     e.preventDefault();
-                    document.querySelector('header').classList.add('blur-exit');
+                    document.getElementById('home').classList.add('blur-exit');
                     document.getElementById('navbar').classList.add('blur-exit');
                     document.getElementById('page-loader-overlay').style.opacity = '1';
                     setTimeout(() => {
@@ -338,7 +354,7 @@
 
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 45, "density": { "enable": true, "value_area": 800 } },
+                "number": { "value": 35, "density": { "enable": true, "value_area": 800 } },
                 "color": { "value": "#6366f1" },
                 "shape": { "type": "circle" },
                 "opacity": { "value": 0.3 },
