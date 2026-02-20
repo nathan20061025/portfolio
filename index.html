@@ -9,10 +9,28 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;700&display=swap');
         
         body { background-color: #08080a; color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; margin: 0; overflow-x: hidden; width: 100%; }
         .heading-font { font-family: 'Space Grotesk', sans-serif; }
+
+        /* --- MOTION BLUR TRANSITION STYLES --- */
+        #page-loader-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: #08080a;
+            z-index: 10001;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .blur-exit {
+            filter: blur(20px) scale(1.1);
+            opacity: 0;
+            transition: filter 0.6s ease-in, opacity 0.6s ease-in, transform 0.6s ease-in;
+        }
 
         /* --- PRELOADER --- */
         #preloader {
@@ -43,7 +61,7 @@
 
         body.loading { overflow: hidden; }
 
-        /* --- BACKGROUND --- */
+        /* --- BACKGROUND & GLOW --- */
         #particles-js { 
             position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; 
             background-image: radial-gradient(circle at 1px, #1e293b 1px, transparent 1px); 
@@ -52,7 +70,6 @@
         
         .nav-hidden { transform: translateY(-200%); }
 
-        /* --- ENHANCED GLOW EFFECTS --- */
         .shimmer-text {
             background: linear-gradient(to right, #4f46e5 0%, #ffffff 50%, #4f46e5 100%);
             background-size: 200% auto;
@@ -70,19 +87,15 @@
 
         .hero-glow-back {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, rgba(79, 70, 229, 0.2) 0%, transparent 70%);
-            z-index: -1;
-            filter: blur(40px);
-            pointer-events: none;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.25) 0%, transparent 70%);
+            z-index: -1; filter: blur(50px); pointer-events: none;
         }
 
         @media (min-width: 1024px) {
-            .hero-glow-back { width: 500px; height: 500px; left: 20%; top: 40%; }
+            .hero-glow-back { width: 600px; height: 600px; left: 20%; top: 40%; }
         }
 
         /* Reveal Logic */
@@ -92,80 +105,92 @@
         .delay-2 { transition-delay: 0.4s; }
         .delay-3 { transition-delay: 0.6s; }
 
-        /* Profile Image Styling - Responsive sizing */
-        .profile-container {
+        /* --- UPDATED 3D SYSTEM ANIMATION (LARGER) --- */
+        :root {
+            --neon-blue: #4f46e5;
+            --neon-purple: #bc13fe;
+            --glass: rgba(15, 23, 42, 0.5);
+            --border: rgba(255, 255, 255, 0.15);
+            --font-code: 'JetBrains Mono', monospace;
+        }
+
+        .animation-container {
+            width: 100%; height: 600px;
+            perspective: 2500px;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        .viewport {
             position: relative;
-            width: 260px;
-            height: 260px;
-            margin: 0 auto;
+            width: 100%; height: 100%;
+            transform-style: preserve-3d;
+            transform: rotateX(20deg) rotateY(-15deg) scale(0.8); /* INCREASED SCALE */
+            animation: cinematicMove 20s infinite alternate ease-in-out;
         }
 
-        @media (min-width: 768px) {
-            .profile-container { width: 350px; height: 350px; }
+        @keyframes cinematicMove {
+            from { transform: rotateX(15deg) rotateY(-20deg) scale(0.75); }
+            to { transform: rotateX(25deg) rotateY(15deg) scale(0.85); }
         }
 
-        .profile-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-            border: 3px solid rgba(79, 70, 229, 0.5);
-            animation: morph 8s ease-in-out infinite;
-            z-index: 10;
-            position: relative;
-            box-shadow: 0 0 30px rgba(79, 70, 229, 0.3);
-        }
-
-        .profile-glow {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: #4f46e5;
-            filter: blur(40px);
-            opacity: 0.25;
+        .orbit-ring {
+            position: absolute; top: 50%; left: 50%;
+            border: 1.5px solid rgba(79, 70, 229, 0.25);
             border-radius: 50%;
-            z-index: 1;
+            transform: translate(-50%, -50%) translateZ(-50px);
+            transform-style: preserve-3d;
+        }
+        .ring-outer { width: 650px; height: 650px; animation: orbit 40s linear infinite; }
+        .ring-inner { width: 450px; height: 450px; animation: orbit 25s linear infinite reverse; }
+
+        @keyframes orbit {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
         }
 
-        @keyframes morph {
-            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            50% { border-radius: 66% 34% 47% 53% / 55% 48% 52% 45%; }
-            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        .icon-node {
+            position: absolute; width: 45px; height: 45px;
+            background: var(--glass); border: 1px solid var(--border);
+            border-radius: 12px; display: flex; justify-content: center; align-items: center;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.2);
         }
 
-        /* Nav Links Responsive spacing */
+        .hub {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%) translateZ(150px); /* PUSHED FORWARD MORE */
+            width: 380px; height: 240px; /* BIGGER HUB */
+            background: var(--glass); border: 1.5px solid var(--border);
+            border-radius: 20px; backdrop-filter: blur(30px); padding: 25px;
+            box-shadow: 0 70px 130px rgba(0,0,0,0.6);
+        }
+
+        .btn-system {
+            position: absolute; padding: 10px 20px;
+            background: rgba(15, 23, 42, 0.95); border: 1px solid var(--neon-purple);
+            border-radius: 6px; color: white; font-family: var(--font-code); font-size: 10px;
+            text-transform: uppercase; letter-spacing: 2px; cursor: pointer;
+            animation: float 6s infinite ease-in-out;
+            transition: 0.3s;
+        }
+        .btn-system:hover { background: var(--neon-purple); box-shadow: 0 0 30px var(--neon-purple); transform: translateZ(200px) scale(1.1); }
+
+        @keyframes float {
+            0%, 100% { transform: translateZ(200px) translateY(0); }
+            50% { transform: translateZ(240px) translateY(-20px); }
+        }
+
+        /* Responsive nav */
         .nav-container {
-            background: rgba(17, 24, 39, 0.6);
-            backdrop-blur: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 0.75rem 1.25rem;
-            border-radius: 9999px;
-            display: flex;
-            gap: 1.25rem;
-            font-size: 0.65rem;
+            background: rgba(17, 24, 39, 0.6); backdrop-blur: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08); padding: 0.75rem 1.25rem;
+            border-radius: 9999px; display: flex; gap: 1.25rem; font-size: 0.65rem;
         }
-
-        @media (min-width: 768px) {
-            .nav-container { gap: 2rem; padding: 1rem 2.5rem; font-size: 0.75rem; }
-        }
-
-        /* Buttons Responsive sizing */
-        .btn-responsive {
-            padding: 10px 20px;
-            font-size: 0.875rem;
-        }
-        @media (min-width: 768px) {
-            .btn-responsive { padding: 12px 28px; font-size: 1rem; }
-        }
-
-        .social-btn { width: 38px; height: 38px; font-size: 1rem; }
-        @media (min-width: 768px) { .social-btn { width: 42px; height: 42px; font-size: 1.125rem; } }
-
-        .tech-pill { font-size: 10px; padding: 3px 10px; }
-        @media (min-width: 768px) { .tech-pill { font-size: 12px; padding: 4px 14px; } }
-
     </style>
 </head>
 <body class="loading">
+
+    <div id="page-loader-overlay"></div>
 
     <div id="preloader">
         <div class="loader-content">
@@ -186,9 +211,9 @@
     <div id="particles-js"></div>
 
     <nav id="navbar" class="fixed top-6 md:top-8 w-full z-50 flex justify-center px-4 transition-transform duration-500 ease-in-out">
-        <div class="nav-container text-xs uppercase tracking-[0.15em] font-bold text-gray-400 shadow-2xl">
-            <a href="#home" class="hover:text-indigo-400 transition">Home</a>
-            <a href="#about" class="hover:text-indigo-400 transition">About</a>
+        <div class="bg-gray-900/40 backdrop-blur-xl border border-white/10 px-6 py-3 rounded-full flex gap-6 text-[10px] md:text-xs uppercase tracking-widest font-bold text-gray-400 shadow-2xl">
+            <a href="index.html" class="text-indigo-400 transition-link">Home</a>
+            <a href="about.html" class="hover:text-indigo-400 transition transition-link">About</a>
             <a href="#portfolio" class="hover:text-indigo-400 transition">Portfolio</a>
             <a href="#contact" class="hover:text-indigo-400 transition">Contact</a>
         </div>
@@ -199,10 +224,41 @@
         
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center w-full relative z-10">
             
-            <div class="order-1 lg:order-2 flex justify-center hero-reveal delay-1">
-                <div class="profile-container">
-                    <div class="profile-glow"></div>
-                    <img src="portfoliomy.jpg" alt="Nathan Fernando" class="profile-image shadow-2xl">
+            <div class="order-1 lg:order-2 flex justify-center hero-reveal delay-1 overflow-visible">
+                <div class="animation-container">
+                    <div class="viewport">
+                        <div class="orbit-ring ring-outer">
+                            <div class="icon-node" style="top: 0; left: 50%;">
+                                <svg viewBox="0 0 24 24" width="22" height="22" stroke="#4f46e5" stroke-width="2" fill="none"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="orbit-ring ring-inner">
+                            <div class="icon-node" style="bottom: 10%; right: 20%;">
+                                <svg viewBox="0 0 24 24" width="22" height="22" stroke="#bc13fe" stroke-width="2" fill="none"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="hub">
+                            <div style="font-family: var(--font-code); color: #64748b; font-size: 10px; margin-bottom: 15px;">// SYSTEM_ACCESS_GRANTED</div>
+                            <div style="height: 10px; background: rgba(79, 70, 229, 0.15); border-radius: 10px; width: 100%; margin-bottom: 15px;">
+                                <div style="height: 100%; width: 75%; background: var(--neon-blue); border-radius: 10px; box-shadow: 0 0 15px var(--neon-blue);"></div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 25px;">
+                                <div style="border: 1px solid var(--border); height: 70px; border-radius: 10px; padding: 10px; background: rgba(255,255,255,0.02);">
+                                    <div style="width: 50%; height: 4px; background: var(--neon-purple); margin-bottom: 8px;"></div>
+                                    <div style="width: 80%; height: 4px; background: rgba(255,255,255,0.08);"></div>
+                                </div>
+                                <div style="border: 1px solid var(--border); height: 70px; border-radius: 10px; padding: 10px; background: rgba(255,255,255,0.02);">
+                                    <div style="width: 60%; height: 4px; background: var(--neon-blue); margin-bottom: 8px;"></div>
+                                    <div style="width: 90%; height: 4px; background: rgba(255,255,255,0.08);"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn-system" style="top: 10%; right: 5%;">Deployment_Live</button>
+                        <button class="btn-system" style="bottom: 15%; left: 0%;">Cloud_Nodes</button>
+                    </div>
                 </div>
             </div>
 
@@ -227,7 +283,7 @@
 
                 <div class="flex flex-wrap justify-center lg:justify-start gap-3 md:gap-4 hero-reveal delay-3">
                     <a href="#portfolio" class="bg-[#4f46e5] btn-responsive rounded-xl font-bold shadow-[0_0_15px_rgba(79,70,229,0.4)] hover:translate-y-[-3px] transition-all">View Projects</a>
-                    <a href="#contact" class="border border-white/10 bg-white/5 btn-responsive rounded-xl font-bold hover:bg-white/10 transition-all">Contact Me</a>
+                    <a href="about.html" class="border border-white/10 bg-white/5 btn-responsive rounded-xl font-bold hover:bg-white/10 transition-all transition-link">About Me</a>
                 </div>
 
                 <div class="flex justify-center lg:justify-start gap-4 hero-reveal delay-3">
@@ -242,23 +298,34 @@
 
     <script>
         window.addEventListener('load', () => {
-            // Speed up the preloader slightly for better UX
             setTimeout(() => {
                 const preloader = document.getElementById('preloader');
-                preloader.style.opacity = '0';
-                preloader.style.visibility = 'hidden';
-                document.body.classList.remove('loading');
-                
+                if(preloader) {
+                    preloader.style.opacity = '0';
+                    preloader.style.visibility = 'hidden';
+                    document.body.classList.remove('loading');
+                }
                 document.querySelectorAll('.hero-reveal').forEach(el => {
                     el.classList.add('start-reveal');
                 });
             }, 2500); 
         });
 
-        const img = document.querySelector('.profile-image');
-        img.onerror = function() {
-            this.src = "https://via.placeholder.com/350?text=Nathan+Fernando"; 
-        };
+        // Motion Blur Page Transition
+        document.querySelectorAll('.transition-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href.includes('.html')) {
+                    e.preventDefault();
+                    document.querySelector('header').classList.add('blur-exit');
+                    document.getElementById('navbar').classList.add('blur-exit');
+                    document.getElementById('page-loader-overlay').style.opacity = '1';
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 500);
+                }
+            });
+        });
 
         let lastScrollTop = 0;
         window.addEventListener('scroll', function() {
@@ -271,7 +338,7 @@
 
         particlesJS("particles-js", {
             "particles": {
-                "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+                "number": { "value": 45, "density": { "enable": true, "value_area": 800 } },
                 "color": { "value": "#6366f1" },
                 "shape": { "type": "circle" },
                 "opacity": { "value": 0.3 },
@@ -279,9 +346,7 @@
                 "line_linked": { "enable": true, "distance": 150, "color": "#6366f1", "opacity": 0.1, "width": 1 },
                 "move": { "enable": true, "speed": 1 }
             },
-            "interactivity": {
-                "events": { "onhover": { "enable": true, "mode": "grab" } }
-            },
+            "interactivity": { "events": { "onhover": { "enable": true, "mode": "grab" } } },
             "retina_detect": true
         });
     </script>
