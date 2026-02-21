@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Nathan Maneth Fernando</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap');
+        
+        body { background-color: #08080a; color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; margin: 0; overflow-x: hidden; width: 100%; }
+        .heading-font { font-family: 'Space Grotesk', sans-serif; }
+
+        /* --- MOTION BLUR TRANSITION --- */
+        #page-loader-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #08080a; z-index: 10001; opacity: 0; pointer-events: none; transition: opacity 0.5s ease-in-out; }
+        .blur-exit { filter: blur(20px) scale(1.1); opacity: 0; transition: filter 0.6s ease-in, opacity 0.6s ease-in, transform 0.6s ease-in; }
+
+        /* --- BACKGROUND --- */
+        #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; background-image: radial-gradient(circle at 1px, #1e293b 1px, transparent 1px); background-size: 40px 40px; }
+        
+        .shimmer-text { background: linear-gradient(to right, #4f46e5 0%, #ffffff 50%, #4f46e5 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 3s linear infinite; }
+        @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+
+        /* --- SUB-NAV BUTTONS --- */
+        .sub-nav-btn { 
+            background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid rgba(255, 255, 255, 0.08); 
+            backdrop-filter: blur(10px); 
+            padding: 8px 16px; 
+            border-radius: 12px; 
+            font-size: 10px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            transition: 0.3s; 
+            display: flex; 
+            align-items: center; 
+            gap: 6px; 
+            color: #94a3b8; 
+            white-space: nowrap;
+        }
+        @media (min-width: 768px) {
+            .sub-nav-btn { padding: 10px 20px; font-size: 11px; gap: 8px; }
+        }
+        .sub-nav-btn.active { background: rgba(79, 70, 229, 0.2); border-color: #4f46e5; color: #fff; }
+        .sub-nav-btn:hover { border-color: rgba(79, 70, 229, 0.6); transform: translateY(-2px); }
+
+        /* --- CARDS --- */
+        .glass-card { background: rgba(17, 24, 39, 0.4); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; padding: 1.5rem; transition: all 0.4s ease; height: 100%; }
+        @media (min-width: 768px) { .glass-card { padding: 2rem; } }
+        .glass-card:hover { border-color: rgba(79, 70, 229, 0.6); transform: translateY(-5px); }
+        
+        .reveal-element { opacity: 0; transform: translateY(30px); transition: all 0.8s ease forwards; }
+        .start-reveal { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+    <div id="page-loader-overlay"></div>
+    <div id="particles-js"></div>
+
+    <nav id="navbar" class="fixed top-4 md:top-8 w-full z-50 flex justify-center px-4 transition-transform duration-500 ease-in-out">
+        <div class="bg-gray-900/40 backdrop-blur-xl border border-white/10 px-5 md:px-8 py-3 md:py-4 rounded-full flex gap-4 md:gap-8 text-[9px] md:text-xs uppercase tracking-widest font-bold text-gray-400 shadow-2xl">
+            <a href="index.html" class="hover:text-indigo-400 transition transition-link">Home</a>
+            <a href="about.html" class="hover:text-indigo-400 transition transition-link">About</a>
+            <a href="portfolio.html" class="text-indigo-400 transition-link">Portfolio</a>
+            <a href="contact.html" class="hover:text-indigo-400 transition transition-link">Contact</a>
+        </div>
+    </nav>
+
+    <main id="main-content" class="relative min-h-screen px-4 md:px-8 max-w-7xl mx-auto pt-28 md:pt-32 pb-24">
+        <header class="text-center mb-10 md:mb-12 reveal-element">
+            <h1 class="heading-font text-4xl md:text-7xl font-bold mb-4">My <span class="shimmer-text">Projects</span></h1>
+        </header>
+
+        <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-16 md:mb-20 reveal-element">
+            <a href="portfolio.html" class="sub-nav-btn active transition-link"><i class="fas fa-project-diagram"></i> Projects</a>
+            <a href="certificates.html" class="sub-nav-btn transition-link"><i class="fas fa-certificate"></i> Certificates</a>
+            <a href="techstack.html" class="sub-nav-btn transition-link"><i class="fas fa-layer-group"></i> Tech Stack</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div class="glass-card reveal-element">
+                <i class="fas fa-brain text-indigo-400 text-3xl mb-6"></i>
+                <h3 class="text-xl font-bold mb-3">Food Prediction System</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6">Deep learning implementation using CNN for image-based nutrition tracking.</p>
+            </div>
+            
+            </div>
+    </main>
+
+    <script>
+        window.addEventListener('load', () => document.querySelectorAll('.reveal-element').forEach(el => el.classList.add('start-reveal')));
+        
+        document.querySelectorAll('.transition-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href.includes('.html')) {
+                    e.preventDefault();
+                    document.getElementById('main-content').classList.add('blur-exit');
+                    document.getElementById('navbar').classList.add('blur-exit');
+                    document.getElementById('page-loader-overlay').style.opacity = '1';
+                    setTimeout(() => window.location.href = href, 500);
+                }
+            });
+        });
+
+        particlesJS("particles-js", { 
+            "particles": { 
+                "number": { "value": 30, "density": { "enable": true, "value_area": 800 } }, 
+                "color": { "value": "#6366f1" }, 
+                "opacity": { "value": 0.3 }, 
+                "size": { "value": 2 }, 
+                "line_linked": { "enable": true, "opacity": 0.1 }, 
+                "move": { "enable": true, "speed": 1 } 
+            }, 
+            "retina_detect": true 
+        });
+    </script>
+</body>
+</html>

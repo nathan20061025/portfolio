@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        :root {
+            --neon-blue: #00f2ff;
+            --neon-purple: #bc13fe;
+            --dark-core: #020617;
+            --glass: rgba(15, 23, 42, 0.4);
+            --border: rgba(255, 255, 255, 0.1);
+            --font-code: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            background: var(--dark-core);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            perspective: 3000px;
+        }
+
+        /* 3D Scene Container */
+        .viewport {
+            position: relative;
+            width: 1100px;
+            height: 700px;
+            transform-style: preserve-3d;
+            transform: rotateX(20deg) rotateY(-15deg);
+            animation: cinematicMove 40s infinite alternate ease-in-out;
+        }
+
+        @keyframes cinematicMove {
+            from { transform: rotateX(15deg) rotateY(-20deg) scale(0.9); }
+            to { transform: rotateX(25deg) rotateY(15deg) scale(1); }
+        }
+
+        /* Rotating Gear Icons */
+        .icon-gear {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            fill: var(--neon-blue);
+            opacity: 0.4;
+            animation: spinGear 8s linear infinite;
+        }
+
+        @keyframes spinGear {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Setting Rings with Icon Nodes */
+        .orbit-ring {
+            position: absolute;
+            top: 50%; left: 50%;
+            border: 1px solid rgba(0, 242, 255, 0.15);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) translateZ(-50px);
+            transform-style: preserve-3d;
+        }
+
+        .ring-outer { width: 850px; height: 850px; animation: orbit 60s linear infinite; }
+        .ring-inner { width: 650px; height: 650px; animation: orbit 30s linear infinite reverse; }
+
+        @keyframes orbit {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Floating Icon Containers */
+        .icon-node {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.1);
+        }
+
+        /* Buttons and Interactive Elements */
+        .btn-system {
+            position: absolute;
+            padding: 12px 24px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--neon-purple);
+            border-radius: 4px;
+            color: white;
+            font-family: var(--font-code);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            transform-style: preserve-3d;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .btn-system:hover {
+            background: var(--neon-purple);
+            box-shadow: 0 0 30px var(--neon-purple);
+            transform: translateZ(250px) scale(1.1);
+        }
+
+        /* The Main IDE Hub */
+        .hub {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) translateZ(100px);
+            width: 500px;
+            height: 320px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            backdrop-filter: blur(30px);
+            padding: 30px;
+            box-shadow: 0 100px 150px rgba(0,0,0,0.7);
+        }
+
+        .node-label {
+            font-size: 9px;
+            color: var(--neon-blue);
+            position: absolute;
+            bottom: -20px;
+            white-space: nowrap;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateZ(200px) translateY(0); }
+            50% { transform: translateZ(240px) translateY(-25px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="viewport">
+        <div class="orbit-ring ring-outer">
+            <div class="icon-node" style="top: 0; left: 50%;">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="var(--neon-blue)" stroke-width="2" fill="none"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                <span class="node-label">CONFIG_CORE</span>
+            </div>
+        </div>
+
+        <div class="orbit-ring ring-inner">
+            <div class="icon-node" style="bottom: 10%; right: 20%;">
+                <svg viewBox="0 0 24 24" width="24" height="24" stroke="var(--neon-purple)" stroke-width="2" fill="none"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                <span class="node-label">PKG_MODULE</span>
+            </div>
+        </div>
+
+        <div class="hub">
+            <div style="font-family: var(--font-code); color: #475569; font-size: 10px; margin-bottom: 20px;">// ROOT_SYSTEM_ACTIVE</div>
+            <div style="height: 12px; background: rgba(0, 242, 255, 0.1); border-radius: 10px; width: 100%; margin-bottom: 10px;">
+                <div style="height: 100%; width: 65%; background: var(--neon-blue); border-radius: 10px; box-shadow: 0 0 15px var(--neon-blue);"></div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px;">
+                <div style="border: 1px solid var(--border); height: 80px; border-radius: 8px; padding: 10px;">
+                    <div style="width: 30%; height: 4px; background: var(--neon-purple); margin-bottom: 8px;"></div>
+                    <div style="width: 60%; height: 4px; background: rgba(255,255,255,0.05);"></div>
+                </div>
+                <div style="border: 1px solid var(--border); height: 80px; border-radius: 8px; padding: 10px;">
+                    <div style="width: 40%; height: 4px; background: var(--neon-blue); margin-bottom: 8px;"></div>
+                    <div style="width: 70%; height: 4px; background: rgba(255,255,255,0.05);"></div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-system" style="top: 15%; right: 10%; animation-delay: 0s;">Force_Deploy</button>
+        <button class="btn-system" style="bottom: 25%; left: 5%; animation-delay: -2s;">Audit_Logs</button>
+        <button class="btn-system" style="top: 40%; left: -15%; animation-delay: -4s;">Cloud_Sync</button>
+
+        <svg class="icon-gear" style="top: 20%; left: 20%;" viewBox="0 0 24 24"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    </div>
+
+</body>
+</html>
