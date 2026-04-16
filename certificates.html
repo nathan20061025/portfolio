@@ -13,55 +13,32 @@
         body { background-color: #08080a; color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; margin: 0; overflow-x: hidden; width: 100%; }
         .heading-font { font-family: 'Space Grotesk', sans-serif; }
 
-        /* --- MOTION BLUR TRANSITION --- */
+        /* --- BACKGROUND & LOADER --- */
         #page-loader-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #08080a; z-index: 10001; opacity: 0; pointer-events: none; transition: opacity 0.5s ease-in-out; }
         .blur-exit { filter: blur(20px) scale(1.1); opacity: 0; transition: 0.6s ease-in; }
-
-        /* --- BACKGROUND --- */
         #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; background-image: radial-gradient(circle at 1px, #1e293b 1px, transparent 1px); background-size: 40px 40px; }
         
         .shimmer-text { background: linear-gradient(to right, #4f46e5 0%, #ffffff 50%, #4f46e5 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 3s linear infinite; }
         @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
 
-        /* --- SUB-NAV BUTTONS --- */
-        .sub-nav-btn { 
-            background: rgba(255, 255, 255, 0.03); 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
-            backdrop-filter: blur(10px); 
-            padding: 8px 16px; 
-            border-radius: 12px; 
-            font-size: 10px; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            transition: 0.3s; 
-            display: flex; 
-            align-items: center; 
-            gap: 6px; 
-            color: #94a3b8; 
-        }
-        @media (min-width: 768px) {
-            .sub-nav-btn { padding: 10px 20px; font-size: 11px; gap: 8px; }
-        }
+        /* --- SUB-NAV --- */
+        .sub-nav-btn { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px); padding: 10px 20px; border-radius: 12px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; display: flex; align-items: center; gap: 8px; color: #94a3b8; }
         .sub-nav-btn.active { background: rgba(79, 70, 229, 0.2); border-color: #4f46e5; color: #fff; }
         .sub-nav-btn:hover { border-color: rgba(79, 70, 229, 0.6); transform: translateY(-2px); }
 
-        /* --- GLASS CARDS --- */
-        .glass-card { 
-            background: rgba(17, 24, 39, 0.4); 
-            backdrop-filter: blur(12px); 
-            border: 1px solid rgba(255, 255, 255, 0.08); 
-            border-radius: 20px; 
-            padding: 1.25rem; 
-            transition: all 0.4s ease; 
-            display: flex; 
-            align-items: center; 
-            gap: 1rem; 
-        }
-        @media (min-width: 768px) {
-            .glass-card { padding: 1.5rem; border-radius: 24px; gap: 1.5rem; }
-        }
-        .glass-card:hover { border-color: rgba(79, 70, 229, 0.6); transform: translateY(-5px); }
+        /* --- 3D CERTIFICATE CARDS --- */
+        .cert-card { background: rgba(17, 24, 39, 0.4); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 28px; padding: 1.5rem; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; }
+        .cert-card:hover { border-color: rgba(79, 70, 229, 0.6); transform: translateY(-8px); }
+
+        .preview-container { perspective: 1000px; margin-bottom: 1.5rem; }
+        .preview-image { width: 100%; border-radius: 16px; transform: rotateX(10deg) rotateY(-10deg) rotateZ(2deg); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1); transition: 0.5s; }
+        .cert-card:hover .preview-image { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1.02); }
+
+        /* --- LIGHTBOX (Image Viewer) --- */
+        #lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 10002; display: none; align-items: center; justify-content: center; backdrop-filter: blur(10px); opacity: 0; transition: opacity 0.3s ease; }
+        #lightbox.active { display: flex; opacity: 1; }
+        #lightbox img { max-width: 90%; max-height: 80%; border-radius: 12px; box-shadow: 0 0 50px rgba(79, 70, 229, 0.3); transform: scale(0.9); transition: transform 0.3s ease; }
+        #lightbox.active img { transform: scale(1); }
 
         .reveal-element { opacity: 0; transform: translateY(30px); transition: all 0.8s ease forwards; }
         .start-reveal { opacity: 1; transform: translateY(0); }
@@ -70,44 +47,70 @@
 <body>
     <div id="page-loader-overlay"></div>
     <div id="particles-js"></div>
+
+    <div id="lightbox" onclick="closeLightbox()">
+        <button class="absolute top-10 right-10 text-white text-3xl"><i class="fas fa-times"></i></button>
+        <img id="lightbox-img" src="" alt="Certificate View">
+    </div>
     
-    <nav id="navbar" class="fixed top-4 md:top-8 w-full z-50 flex justify-center px-4">
-        <div class="bg-gray-900/40 backdrop-blur-xl border border-white/10 px-4 md:px-6 py-3 rounded-full flex gap-4 md:gap-6 text-[9px] md:text-xs uppercase tracking-widest font-bold text-gray-400 shadow-2xl">
+    <nav id="navbar" class="fixed top-8 w-full z-50 flex justify-center px-4">
+        <div class="bg-gray-900/40 backdrop-blur-xl border border-white/10 px-8 py-4 rounded-full flex gap-8 text-xs uppercase tracking-widest font-bold text-gray-400 shadow-2xl">
             <a href="index.html" class="hover:text-indigo-400 transition-link">Home</a>
             <a href="about.html" class="hover:text-indigo-400 transition-link">About</a>
             <a href="portfolio.html" class="hover:text-indigo-400 transition-link">Portfolio</a>
-            <a href="contact.html" class="hover:text-indigo-400 transition transition-link">Contact</a>
-
+            <a href="contact.html" class="hover:text-indigo-400 transition-link">Contact</a>
         </div>
     </nav>
 
-    <main id="main-content" class="relative min-h-screen px-4 md:px-8 max-w-7xl mx-auto pt-28 md:pt-32 pb-24">
-        <header class="text-center mb-10 md:mb-12 reveal-element">
-            <h1 class="heading-font text-4xl md:text-7xl font-bold mb-4">My <span class="shimmer-text">Certificates</span></h1>
+    <main id="main-content" class="relative min-h-screen px-4 md:px-8 max-w-7xl mx-auto pt-32 pb-24">
+        <header class="text-center mb-12 reveal-element">
+            <h1 class="heading-font text-5xl md:text-7xl font-bold mb-4">My <span class="shimmer-text">Certificates</span></h1>
         </header>
 
-        <div class="flex flex-wrap justify-center gap-3 md:gap-4 mb-16 md:mb-20 reveal-element">
+        <div class="flex flex-wrap justify-center gap-4 mb-20 reveal-element">
             <a href="portfolio.html" class="sub-nav-btn transition-link"><i class="fas fa-project-diagram"></i> Projects</a>
             <a href="certificates.html" class="sub-nav-btn active transition-link"><i class="fas fa-certificate"></i> Certificates</a>
             <a href="techstack.html" class="sub-nav-btn transition-link"><i class="fas fa-layer-group"></i> Tech Stack</a>
-            
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            <div class="glass-card reveal-element">
-                <div class="p-3 md:p-4 bg-indigo-500/10 rounded-xl">
-                    <i class="fas fa-medal text-xl md:text-2xl text-indigo-400"></i>
-                </div>
-                <div>
-                    <h4 class="font-bold text-sm md:text-base">Software Engineering</h4>
-                    <p class="text-[10px] md:text-xs text-gray-500">SLIIT City Uni</p>
-                </div>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
+            <div class="cert-card reveal-element" onclick="openLightbox('cer1.jpeg')">
+                <div class="preview-container">
+                    <img src="cer1.jpeg" class="preview-image" alt="Software Engineering Certificate">
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="p-3 bg-indigo-500/10 rounded-xl">
+                        <i class="fas fa-medal text-xl text-indigo-400"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-base">Software Engineering</h4>
+                        <p class="text-xs text-gray-500">SLIIT City Uni</p>
+                    </div>
+                </div>
             </div>
+
+        </div>
     </main>
 
     <script>
+        // Updated Lightbox Logic
+        function openLightbox(src) {
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src; // Sets the image source to cer1.jpeg
+            lb.style.display = 'flex'; // Use style to force display before opacity
+            setTimeout(() => lb.classList.add('active'), 10);
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            lb.classList.remove('active');
+            setTimeout(() => lb.style.display = 'none', 300);
+            document.body.style.overflow = 'auto';
+        }
+
         window.addEventListener('load', () => {
             document.querySelectorAll('.reveal-element').forEach(el => el.classList.add('start-reveal'));
         });
@@ -137,6 +140,50 @@
             }, 
             "retina_detect": true 
         });
+
+        // Add this to certificates.html before closing body tag
+async function loadCertificates() {
+    try {
+        const response = await fetch('backend/api/get-certificates.php');
+        const data = await response.json();
+        
+        if (data.success && data.certificates.length > 0) {
+            const container = document.querySelector('.grid');
+            container.innerHTML = '';
+            
+            data.certificates.forEach(cert => {
+                const card = `
+                    <div class="cert-card reveal-element" onclick="openLightbox('${cert.image_path}')">
+                        <div class="preview-container">
+                            <img src="${cert.image_path}" class="preview-image" alt="${cert.title}">
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="p-3 bg-indigo-500/10 rounded-xl">
+                                <i class="fas fa-medal text-xl text-indigo-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-base">${cert.title}</h4>
+                                <p class="text-xs text-gray-500">${cert.issuer}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+            
+            // Re-trigger animations
+            document.querySelectorAll('.reveal-element').forEach(el => el.classList.add('start-reveal'));
+        }
+    } catch (error) {
+        console.error('Error loading certificates:', error);
+    }
+}
+
+// Call loadCertificates on page load
+window.addEventListener('load', () => {
+    loadCertificates();
+    document.querySelectorAll('.reveal-element').forEach(el => el.classList.add('start-reveal'));
+});
     </script>
 </body>
 </html>
