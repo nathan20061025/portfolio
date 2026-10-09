@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Nathan Maneth Fernando</title>
+    <title>Projects | Nathan Fernando - Software & AI Engineer</title>
+    <meta name="description" content="Projects by Nathan Fernando: multi-agent AI travel planner, computer vision food recognition, enterprise systems and full-stack applications.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -78,7 +79,7 @@
             backdrop-filter: blur(4px);
         }
 
-        .reveal-element { opacity: 0; transform: translateY(30px); transition: all 0.8s ease forwards; }
+        .reveal-element { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
         .start-reveal { opacity: 1; transform: translateY(0); }
         
         .github-link {
@@ -94,6 +95,9 @@
             color: white;
         }
     </style>
+    <meta name="theme-color" content="#08080a">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="polish.css">
 </head>
 <body>
     <div id="page-loader-overlay"></div>
@@ -122,6 +126,34 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
             
+            <!-- PROJECT 0: Multi-Agent Travel Planner AI -->
+            <div class="project-card reveal-element">
+                <div class="preview-container">
+                    <div class="preview-content">
+                        <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-indigo-600/40 via-slate-900 to-purple-600/40">
+                            <i class="fas fa-route text-6xl text-indigo-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Multi-Agent Travel Planner AI</h3>
+                <p class="text-gray-400 text-sm mb-4">An AI travel planning app where multiple cooperating agents research destinations, build itineraries and refine plans into a complete trip.</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <div class="flex gap-2">
+                        <div class="tech-icon"><i class="fas fa-robot text-indigo-400"></i></div>
+                        <div class="tech-icon"><i class="fab fa-python text-yellow-400"></i></div>
+                        <div class="tech-icon"><i class="fas fa-plug text-green-400"></i></div>
+                    </div>
+                    <div class="flex gap-2">
+                        <a href="https://multi-agent-travel-planner-ai.vercel.app/" target="_blank" rel="noopener" class="github-link text-sm font-bold text-gray-300 hover:text-white flex items-center gap-2">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/nathan20061025/Multi-agent-travel-planner-AI-" target="_blank" rel="noopener" class="github-link text-sm font-bold text-gray-300 hover:text-white flex items-center gap-2">
+                            <i class="fab fa-github"></i> Source Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
             <!-- PROJECT 1: Smart Kitchen AI -->
             <div class="project-card reveal-element" onmouseenter="playVideo(this)" onmouseleave="pauseVideo(this)">
                 <div class="preview-container">
@@ -283,5 +315,6 @@
             "retina_detect": true 
         });
     </script>
+    <script src="polish.js"></script>
 </body>
 </html>

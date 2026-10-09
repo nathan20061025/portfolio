@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Nathan Maneth Fernando</title>
+    <title>About | Nathan Fernando - Software & AI Engineer</title>
+    <meta name="description" content="About Nathan Fernando: Software Engineer at Scienter Technologies building enterprise fintech apps and AI-powered applications with .NET, Angular and Python.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -71,7 +72,7 @@
         @keyframes morph { 0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; } 50% { border-radius: 66% 34% 47% 53% / 55% 48% 52% 45%; } 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; } }
 
         /* Reveal Animation */
-        .reveal-element { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+        .reveal-element { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.22, 1, 0.36, 1); }
         .start-reveal { opacity: 1; transform: translateY(0); }
         
         /* Toast notification for download errors */
@@ -93,6 +94,9 @@
         @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
         @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
     </style>
+    <meta name="theme-color" content="#08080a">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="polish.css">
 </head>
 <body>
 
@@ -115,12 +119,16 @@
             <div class="order-1 lg:order-2 flex justify-center reveal-element" style="animation-delay: 0.4s;">
                 <div class="profile-container">
                     <div class="profile-glow"></div>
-                    <img src="portfoliomy.jpg" alt="Nathan Maneth Fernando" class="profile-image shadow-2xl">
+                    <img src="portfoliomy.jpg" alt="Portrait of Nathan Fernando" class="profile-image shadow-2xl">
                 </div>
             </div>
 
             <div class="order-2 lg:order-1 space-y-6 md:space-y-8 text-center lg:text-left">
                 <div class="space-y-3 md:space-y-4">
+                    <span class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-[10px] md:text-xs font-bold text-gray-300 reveal-element">
+                        <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span></span>
+                        Open to Software &amp; AI Engineer roles
+                    </span>
                     <p class="text-indigo-500 font-bold text-xs md:text-sm tracking-[0.4em] uppercase reveal-element" style="animation-delay: 0.2s;">Hello, I'm</p>
                     <h1 class="heading-font text-3xl md:text-6xl lg:text-7xl font-bold text-glow reveal-element leading-tight" style="animation-delay: 0.4s;">
                         <span class="shimmer-text">Nathan Maneth</span><br>
@@ -130,16 +138,23 @@
 
                 <div class="text-gray-400 text-xs md:text-sm lg:text-lg leading-relaxed reveal-element space-y-4 md:space-y-6" style="animation-delay: 0.6s;">
                     <p>
-                        I am a 2nd year, 2nd semester student at SLIIT City Uni (SCU). 
-                        As a budding Software Engineer, I am passionate about creating digital experiences that are both technically sophisticated and visually compelling.
+                        I'm a Software &amp; AI Engineer with hands-on experience in API integrations, process automation and database-driven systems. I currently work as a Software Engineer at Scienter Technologies, building enterprise fintech applications with .NET, SQL Server and Angular within an Agile team.
                     </p>
                     <p>
-                        "Head over to my projects page to view my latest work. I am currently focused on developing advanced software solutions, including recognition systems and specialized Android applications."
+                        I've built AI-powered applications, including TripMate AI, a travel itinerary assistant, and an AI Food Intelligence System, a nutrition-aware recipe recommender. I've also developed computer vision models with TensorFlow. Alongside this, I maintain 99.9% uptime for e-commerce systems and databases as Tech Administrator at Evanz Clothing.
+                    </p>
+                    <p>
+                        I'm completed my Higher National Diploma in IT at SLIIT City Uni (GPA 3.5, Dean's List) and pursuing a BSc (Hons) in Computer Science at the University of Bedfordshire. I'm keen to deepen my expertise in workflow automation, LLM integrations and MCP.
                     </p>
                 </div>
 
+                <div class="chip-row reveal-element">
+                    <span class="chip">.NET</span><span class="chip">Angular</span><span class="chip">Python</span><span class="chip">TensorFlow</span>
+                    <span class="chip">SQL Server</span><span class="chip">LLM Integrations</span><span class="chip">REST APIs</span><span class="chip">AWS</span>
+                </div>
+
                 <div class="flex flex-wrap justify-center lg:justify-start gap-3 md:gap-4 reveal-element" style="animation-delay: 0.8s;">
-                    <!-- UPDATED: Download CV Button - directly downloads My_CV.pdf -->
+                    <!-- UPDATED: Download CV Button - directly downloads Nathan_Fernando_CV_AI_Automation_Engineer.pdf -->
                     <a href="#" id="downloadCvBtn" class="bg-[#4f46e5] text-xs md:text-base px-6 md:px-8 py-3 rounded-xl font-bold shadow-lg shadow-indigo-500/20 hover:translate-y-[-3px] transition-all">Download CV</a>
                     <a href="portfolio.html" class="border border-white/10 bg-white/5 text-xs md:text-base px-6 md:px-8 py-3 rounded-xl font-bold hover:bg-white/10 transition-all transition-link">View Projects</a>
                 </div>
@@ -169,7 +184,7 @@
         });
 
         // --- DIRECT CV DOWNLOAD FUNCTIONALITY ---
-        // This creates a downloadable blob from the local file 'My_CV.pdf'
+        // This creates a downloadable blob from the local file 'Nathan_Fernando_CV_AI_Automation_Engineer.pdf'
         // Assumes the file is in the same directory as about.html
         const downloadBtn = document.getElementById('downloadCvBtn');
         
@@ -178,14 +193,14 @@
                 e.preventDefault();
                 
                 // Path to your CV file - located in the same directory as about.html
-                const cvFilePath = 'My_CV.pdf';
+                const cvFilePath = 'Nathan_Fernando_CV_AI_Automation_Engineer.pdf';
                 
                 // Method 1: Try to fetch the file and trigger download via blob
                 // This ensures proper download even for PDFs
                 fetch(cvFilePath)
                     .then(response => {
                         if (!response.ok) {
-                            throw new Error(`CV file not found (${response.status}). Please ensure 'My_CV.pdf' exists in the same folder as about.html`);
+                            throw new Error(`CV file not found (${response.status}). Please ensure 'Nathan_Fernando_CV_AI_Automation_Engineer.pdf' exists in the same folder as about.html`);
                         }
                         return response.blob();
                     })
@@ -194,7 +209,7 @@
                         const url = window.URL.createObjectURL(blob);
                         const a = document.createElement('a');
                         a.href = url;
-                        a.download = 'Nathan_Maneth_Fernando_CV.pdf'; // Custom filename for download
+                        a.download = 'Nathan_Fernando_CV_AI_Automation_Engineer.pdf'; // Custom filename for download
                         document.body.appendChild(a);
                         a.click();
                         document.body.removeChild(a);
@@ -211,7 +226,7 @@
                             window.location.href = cvFilePath;
                             showToast('CV download started (fallback mode)', 'success');
                         } catch (fallbackErr) {
-                            showToast('✗ CV file not found. Please check that "My_CV.pdf" exists in the website folder.', 'error');
+                            showToast('✗ CV file not found. Please check that "Nathan_Fernando_CV_AI_Automation_Engineer.pdf" exists in the website folder.', 'error');
                         }
                     });
             });
@@ -249,5 +264,6 @@
         });
     </script>
     
+    <script src="polish.js"></script>
 </body>
 </html>

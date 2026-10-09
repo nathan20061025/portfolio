@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificates | Nathan Maneth Fernando</title>
+    <title>Certificates | Nathan Fernando - Software & AI Engineer</title>
+    <meta name="description" content="Professional certificates and learning achievements of Nathan Fernando.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -40,9 +41,12 @@
         /* Overlay to capture clicks since iFrames eat mouse events */
         .click-overlay { position: absolute; inset: 0; z-index: 10; background: transparent; }
 
-        .reveal-element { opacity: 0; transform: translateY(30px); transition: all 0.8s ease forwards; }
+        .reveal-element { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
         .start-reveal { opacity: 1; transform: translateY(0); }
     </style>
+    <meta name="theme-color" content="#08080a">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="polish.css">
 </head>
 <body>
     <div id="page-loader-overlay"></div>
@@ -60,6 +64,7 @@
     <main id="main-content" class="relative min-h-screen px-4 md:px-8 max-w-7xl mx-auto pt-32 pb-24">
         <header class="text-center mb-12 reveal-element">
             <h1 class="heading-font text-5xl md:text-7xl font-bold mb-4">My <span class="shimmer-text">Certificates</span></h1>
+            <p class="text-gray-400 max-w-2xl mx-auto">Courses and credentials supporting my work in AI, critical thinking and professional growth. Click a card to open the full certificate.</p>
         </header>
 
         <div class="flex flex-wrap justify-center gap-4 mb-20 reveal-element">
@@ -102,6 +107,22 @@
                 </div>
             </div>
 
+            <div class="cert-card reveal-element" onclick="window.open('certificate3.pdf', '_blank')">
+                <div class="click-overlay"></div>
+                <div class="preview-container">
+                    <iframe src="certificate3.pdf#toolbar=0&navpanes=0&scrollbar=0" class="pdf-preview"></iframe>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="p-3 bg-indigo-500/10 rounded-xl">
+                        <i class="fas fa-medal text-xl text-indigo-400"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-base">Certificate of Completion</h4>
+                        <p class="text-xs text-gray-500">August 2026</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 
@@ -136,5 +157,6 @@
             "retina_detect": true 
         });
     </script>
+    <script src="polish.js"></script>
 </body>
 </html>

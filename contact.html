@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Contact | Nathan Fernando</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Nathan Fernando | Software & AI Engineer</title>
+    <meta name="description" content="Get in touch with Nathan Fernando, a Software & AI Engineer open to Software & AI Engineer roles, AI automation projects and technical collaborations.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -57,7 +58,7 @@
         .contact-input:focus { border-color: #6366f1; background: rgba(99, 102, 241, 0.05); box-shadow: 0 0 15px rgba(99, 102, 241, 0.2); }
         .contact-input.error { border-color: #ef4444; background: rgba(239, 68, 68, 0.1); }
 
-        .reveal-element { opacity: 0; transform: translateY(20px); transition: all 0.8s ease forwards; }
+        .reveal-element { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
         .start-reveal { opacity: 1; transform: translateY(0); }
         .nav-hidden { transform: translateY(-200%); }
         
@@ -73,6 +74,9 @@
         .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: white; animation: spin 0.6s linear infinite; margin-right: 8px; }
         @keyframes spin { to { transform: rotate(360deg); } }
     </style>
+    <meta name="theme-color" content="#08080a">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="polish.css">
 </head>
 <body class="loading">
 
@@ -116,7 +120,7 @@
                     <div class="hub-glass">
                         <span style="color: #6366f1; font-weight: 800; font-size: 9px; letter-spacing: 3px; font-family: 'Fira Code';">COMM_PROTOCOL: ACTIVE</span>
                         <h2 style="color: white; font-size: 38px; margin: 10px 0; font-weight: 800; letter-spacing: -1px; font-family: 'Space Grotesk';">Nathan Fernando</h2>
-                        <p style="color: #64748b; line-height: 1.6; max-width: 280px; font-size: 13px;">SLIIT City Uni Student ready for Software Engineering collaborations.</p>
+                        <p style="color: #64748b; line-height: 1.6; max-width: 280px; font-size: 13px;">Software &amp; AI Engineer open to AI, automation and backend engineering roles.</p>
                         <div style="margin-top: 25px; display: flex; gap: 12px;"><div style="width: 35px; height: 3px; background: #6366f1;"></div><div style="width: 70px; height: 3px; background: rgba(255,255,255,0.1);"></div></div>
                     </div>
 
@@ -136,7 +140,7 @@
         <div class="w-full lg:w-1/2 space-y-6 md:space-y-8 text-center lg:text-left order-2 lg:order-1 reveal-element">
             <div class="space-y-3">
                 <h1 class="heading-font text-5xl md:text-7xl font-bold text-glow">Get In <span class="shimmer-text">Touch</span></h1>
-                <p class="text-gray-400 text-sm md:text-lg max-w-md mx-auto lg:mx-0">Discuss potential projects, internships, or technical collaborations.</p>
+                <p class="text-gray-400 text-sm md:text-lg max-w-md mx-auto lg:mx-0">Open to Software &amp; AI Engineer roles. Reach out about AI applications, API integrations, process automation or technical collaborations.</p>
             </div>
 
             <!-- UPDATED: AJAX Form Submission - No redirect, no 404 error -->
@@ -152,12 +156,15 @@
                 </button>
             </form>
 
-            <div class="flex justify-center lg:justify-start gap-8 pt-4">
+            <div class="flex flex-wrap justify-center lg:justify-start gap-x-8 gap-y-3 pt-4">
                 <a href="mailto:nathanfernando045@gmail.com" class="text-gray-400 hover:text-indigo-400 transition text-xs md:text-sm uppercase tracking-widest font-bold flex items-center">
                     <i class="fas fa-envelope mr-3"></i>Email
                 </a>
-                <a href="#" id="linkedinLink" class="text-gray-400 hover:text-indigo-400 transition text-xs md:text-sm uppercase tracking-widest font-bold flex items-center">
+                <a href="https://www.linkedin.com/in/nathan-fernando-se/" target="_blank" rel="noopener" class="text-gray-400 hover:text-indigo-400 transition text-xs md:text-sm uppercase tracking-widest font-bold flex items-center">
                     <i class="fab fa-linkedin mr-3"></i>LinkedIn
+                </a>
+                <a href="https://github.com/nathan20061025" target="_blank" rel="noopener" class="text-gray-400 hover:text-indigo-400 transition text-xs md:text-sm uppercase tracking-widest font-bold flex items-center">
+                    <i class="fab fa-github mr-3"></i>GitHub
                 </a>
             </div>
         </div>
@@ -304,12 +311,6 @@
             }
         });
 
-        // LinkedIn link
-        document.getElementById('linkedinLink').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.open('https://www.linkedin.com/in/nathan-fernando-se/', '_blank');
-        });
-
         // Particles Background
         particlesJS("particles-js", {
             "particles": {
@@ -323,5 +324,6 @@
             "retina_detect": true
         });
     </script>
+    <script src="polish.js"></script>
 </body>
 </html>

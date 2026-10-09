@@ -1,0 +1,138 @@
+/* ==========================================================
+   polish.css - shared UI/UX polish layer for every page.
+   Loaded after each page's inline <style>, so it refines
+   rather than replaces the existing design.
+   ========================================================== */
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+::selection { background: rgba(99, 102, 241, 0.45); color: #fff; }
+
+/* --- Scrollbar --- */
+* { scrollbar-width: thin; scrollbar-color: #4f46e5 #0c0c10; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0c0c10; }
+::-webkit-scrollbar-thumb { background: linear-gradient(#4f46e5, #7c3aed); border-radius: 10px; border: 2px solid #0c0c10; }
+
+/* --- Accessibility: visible keyboard focus --- */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid #818cf8; outline-offset: 3px; border-radius: 10px;
+}
+
+/* --- Scroll progress bar --- */
+#scroll-progress {
+    position: fixed; top: 0; left: 0; width: 100%; height: 3px;
+    transform-origin: 0 50%; transform: scaleX(0);
+    background: linear-gradient(90deg, #4f46e5, #a78bfa, #38bdf8);
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.7);
+    z-index: 10000; pointer-events: none;
+}
+
+/* --- Ambient aurora behind everything --- */
+.aurora { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background:
+        radial-gradient(600px circle at 8% 0%, rgba(79, 70, 229, 0.28), transparent 60%),
+        radial-gradient(560px circle at 100% 100%, rgba(124, 58, 237, 0.22), transparent 60%),
+        radial-gradient(420px circle at 60% 45%, rgba(14, 165, 233, 0.08), transparent 60%); }
+.aurora span { display: none; }
+
+/* --- Page entrance (mirrors the existing blur-exit) --- */
+@keyframes pageIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
+}
+#main-content, #home { animation: pageIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
+
+/* --- Navbar: glass pill with an active state --- */
+#navbar > div {
+    background: rgba(12, 12, 18, 0.55) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+    gap: 0.15rem !important; padding: 0.4rem !important;
+}
+#navbar .nav-link-container { gap: 0.15rem; }
+#navbar a { position: relative; padding: 0.55rem 0.9rem; border-radius: 999px; transition: color 0.3s, background 0.3s, box-shadow 0.3s; }
+#navbar a:hover { color: #c7d2fe; background: rgba(255, 255, 255, 0.06); }
+#navbar a.nav-active {
+    color: #fff !important;
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.55), rgba(124, 58, 237, 0.4));
+    box-shadow: 0 0 18px rgba(99, 102, 241, 0.35);
+}
+@media (max-width: 480px) { #navbar a { padding: 0.5rem 0.6rem; } }
+
+/* --- Cards: soft cursor spotlight + glow on hover --- */
+.project-card, .cert-card, .tech-card, .glass-card { position: relative; --mx: 50%; --my: 50%; }
+.project-card::after, .cert-card::after, .tech-card::after, .glass-card::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+    opacity: 0; transition: opacity 0.4s ease;
+    background: radial-gradient(420px circle at var(--mx) var(--my), rgba(99, 102, 241, 0.16), transparent 45%);
+}
+.project-card:hover::after, .cert-card:hover::after, .tech-card:hover::after, .glass-card:hover::after { opacity: 1; }
+.project-card:hover, .cert-card:hover { box-shadow: 0 25px 60px -15px rgba(79, 70, 229, 0.35); }
+
+/* --- Primary buttons: gradient + shine sweep --- */
+[class*="bg-[#4f46e5]"] {
+    position: relative; overflow: hidden; display: inline-block;
+    background-image: linear-gradient(135deg, #4f46e5, #7c3aed);
+}
+[class*="bg-[#4f46e5]"]::after {
+    content: ""; position: absolute; top: 0; left: -120%; width: 60%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-20deg); transition: left 0.7s ease; pointer-events: none;
+}
+[class*="bg-[#4f46e5]"]:hover::after { left: 140%; }
+a[class*="bg-white/5"]:hover { border-color: rgba(99, 102, 241, 0.6) !important; box-shadow: 0 0 20px rgba(99, 102, 241, 0.2); }
+
+/* --- Section label under page titles --- */
+main header h1 { letter-spacing: -0.02em; }
+
+/* --- Skill chips (about page) --- */
+.chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+@media (min-width: 1024px) { .chip-row { justify-content: flex-start; } }
+.chip {
+    padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 11px; font-weight: 700;
+    background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3); color: #c7d2fe;
+    transition: transform 0.3s, background 0.3s, border-color 0.3s;
+}
+.chip:hover { transform: translateY(-2px); background: rgba(99, 102, 241, 0.22); border-color: rgba(99, 102, 241, 0.6); }
+
+/* --- Hero scroll cue (home) --- */
+.scroll-cue { position: absolute; bottom: 1.25rem; left: 50%; transform: translateX(-50%); display: none; flex-direction: column; align-items: center; gap: 6px; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: #64748b; text-decoration: none; }
+@media (min-width: 1024px) { .scroll-cue { display: flex; } }
+.scroll-cue i { animation: cueBounce 1.6s ease-in-out infinite; color: #6366f1; }
+@keyframes cueBounce { 0%, 100% { transform: translateY(0); opacity: 0.5; } 50% { transform: translateY(6px); opacity: 1; } }
+
+/* --- Back to top --- */
+#to-top {
+    position: fixed; right: 20px; bottom: 20px; width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    color: #fff; background: rgba(79, 70, 229, 0.85); border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.45); backdrop-filter: blur(8px);
+    opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity 0.3s, transform 0.3s; z-index: 9000;
+}
+#to-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+#to-top:hover { background: #6366f1; }
+
+/* --- Footer --- */
+.site-footer {
+    position: relative; margin-top: 1rem; padding: 2.5rem 1.5rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(to top, rgba(79, 70, 229, 0.08), transparent);
+}
+.site-footer .inner { max-width: 80rem; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1.25rem; text-align: center; }
+.site-footer .brand { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; }
+.site-footer .role { color: #64748b; font-size: 0.8rem; }
+.site-footer .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.25rem; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 700; color: #94a3b8; }
+.site-footer .links a:hover { color: #818cf8; }
+.site-footer .socials { display: flex; gap: 0.75rem; }
+.site-footer .socials a {
+    width: 2.5rem; height: 2.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); color: #cbd5e1; transition: all 0.3s;
+}
+.site-footer .socials a:hover { background: #4f46e5; color: #fff; transform: translateY(-3px); box-shadow: 0 0 20px rgba(79, 70, 229, 0.6); }
+.site-footer .copy { color: #475569; font-size: 11px; }
+
+/* --- Respect reduced-motion preferences --- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}

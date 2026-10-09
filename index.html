@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nathan Fernando | Software Engineer</title>
+    <title>Nathan Fernando | Software & AI Engineer</title>
+    <meta name="description" content="Nathan Fernando is a Software & AI Engineer building AI-powered applications, API integrations and automated systems with .NET, Angular, Python and SQL Server. Open to Software & AI Engineer roles.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Nathan Fernando | Software & AI Engineer">
+    <meta property="og:description" content="I build AI-powered applications, API integrations and automated systems for real-world business use.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Nathan Fernando | Software & AI Engineer">
+    <meta name="twitter:description" content="I build AI-powered applications, API integrations and automated systems for real-world business use.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;700&display=swap');
         
@@ -196,12 +202,21 @@
             50% { transform: translateZ(240px) translateY(-20px); }
         }
 
+        .tech-pill { padding: 0.25rem 0.75rem; font-size: 10px; }
+        .social-btn { width: 2.5rem; height: 2.5rem; font-size: 0.9rem; }
+        @media (min-width: 768px) { .tech-pill { font-size: 0.8rem; } .social-btn { width: 3rem; height: 3rem; font-size: 1.1rem; } }
+        .glass-card { background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(12px); transition: transform 0.3s ease, border-color 0.3s ease; }
+        .glass-card:hover { transform: translateY(-5px); border-color: rgba(99, 102, 241, 0.5); }
+
         /* Nav responsive spacing */
         .nav-link-container {
             display: flex; gap: 0.75rem;
         }
         @media (min-width: 768px) { .nav-link-container { gap: 1.5rem; } }
     </style>
+    <meta name="theme-color" content="#08080a">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="polish.css">
 </head>
 <body class="loading">
 
@@ -230,8 +245,8 @@
             <div class="nav-link-container text-[9px] md:text-xs uppercase tracking-widest font-bold text-gray-400">
                 <a href="index.html" class="text-indigo-400 transition-link">Home</a>
                 <a href="about.html" class="hover:text-indigo-400 transition transition-link">About</a>
-                <a href="portfolio.html" class="hover:text-indigo-400 transition">Portfolio</a>
-                <a href="contact.html" class="hover:text-indigo-400 transition">Contact</a>
+                <a href="portfolio.html" class="hover:text-indigo-400 transition transition-link">Portfolio</a>
+                <a href="contact.html" class="hover:text-indigo-400 transition transition-link">Contact</a>
             </div>
         </div>
     </nav>
@@ -280,38 +295,81 @@
             </div>
 
             <div class="space-y-6 md:space-y-8 text-center lg:text-left order-2 lg:order-1">
+                <div class="flex flex-col items-center lg:items-start gap-2 hero-reveal">
+                    <span class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-3 py-1.5 text-[10px] md:text-xs font-bold text-gray-300">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        </span>
+                        Software Engineer @ Scienter Technologies
+                    </span>
+                    <span class="text-[10px] md:text-xs font-bold text-indigo-300 tracking-wide">Open to Software &amp; AI Engineer roles</span>
+                </div>
+
                 <div class="space-y-2">
-                    <p class="text-indigo-500 font-bold text-[10px] md:text-sm tracking-[0.3em] uppercase hero-reveal">Nathan Fernando</p>
+                    <p class="text-indigo-500 font-bold text-[10px] md:text-sm tracking-[0.3em] uppercase hero-reveal">Hello, I'm</p>
                     <h1 class="heading-font text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-none hero-reveal delay-1 text-glow">
-                        <span class="shimmer-text">Software </span><span class="shimmer-text">Engineer</span>
+                        <span class="shimmer-text">Nathan Fernando</span>
                     </h1>
+                    <h2 class="heading-font text-lg md:text-3xl font-bold text-gray-200 hero-reveal delay-1">Software &amp; AI Engineer</h2>
                 </div>
 
                 <p class="max-w-xl mx-auto lg:mx-0 text-gray-400 text-xs md:text-lg leading-relaxed hero-reveal delay-2">
-                    Specializing in building robust digital solutions that bridge the gap between technical complexity and user-centric design.
+                    I build AI-powered applications, API integrations and automated systems for real-world business use.
                 </p>
 
                 <div class="flex flex-wrap justify-center lg:justify-start gap-2 md:gap-3 hero-reveal delay-2">
-                    <span class="tech-pill bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 rounded-lg font-bold">React</span>
-                    <span class="tech-pill bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 rounded-lg font-bold">JavaScript</span>
-                    <span class="tech-pill bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 rounded-lg font-bold">Node.js</span>
+                    <span class="tech-pill bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 rounded-lg font-bold">C# / .NET</span>
+                    <span class="tech-pill bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 rounded-lg font-bold">Angular</span>
                     <span class="tech-pill bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 rounded-lg font-bold">Python</span>
+                    <span class="tech-pill bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 rounded-lg font-bold">TensorFlow</span>
+                    <span class="tech-pill bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 rounded-lg font-bold">SQL Server</span>
                 </div>
 
                 <div class="flex flex-wrap justify-center lg:justify-start gap-3 md:gap-4 hero-reveal delay-3">
-                    <a href="portfolio.html" class="bg-[#4f46e5] text-[10px] md:text-base px-5 md:px-8 py-2 md:py-3 rounded-xl font-bold shadow-[0_0_15px_rgba(79,70,229,0.4)] hover:translate-y-[-3px] transition-all">View Projects</a>
-                    <a href="about.html" class="border border-white/10 bg-white/5 text-[10px] md:text-base px-5 md:px-8 py-2 md:py-3 rounded-xl font-bold hover:bg-white/10 transition-all transition-link">About Me</a>
+                    <a href="portfolio.html" class="bg-[#4f46e5] text-[10px] md:text-base px-5 md:px-8 py-2 md:py-3 rounded-xl font-bold shadow-[0_0_15px_rgba(79,70,229,0.4)] hover:translate-y-[-3px] transition-all transition-link">View Projects</a>
+                    <a href="Nathan_Fernando_CV_AI_Automation_Engineer.pdf" download="Nathan_Fernando_CV_AI_Automation_Engineer.pdf" class="border border-white/10 bg-white/5 text-[10px] md:text-base px-5 md:px-8 py-2 md:py-3 rounded-xl font-bold hover:bg-white/10 transition-all">Download CV</a>
+                    <a href="contact.html" class="border border-white/10 bg-white/5 text-[10px] md:text-base px-5 md:px-8 py-2 md:py-3 rounded-xl font-bold hover:bg-white/10 transition-all transition-link">Contact Me</a>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 hero-reveal delay-3">
+                    <div class="glass-card rounded-xl p-3"><p class="heading-font text-xl md:text-2xl font-bold text-indigo-400">99.9%</p><p class="text-[10px] md:text-xs text-gray-400">Uptime</p></div>
+                    <div class="glass-card rounded-xl p-3"><p class="heading-font text-xl md:text-2xl font-bold text-indigo-400">5+</p><p class="text-[10px] md:text-xs text-gray-400">Enterprise systems delivered</p></div>
+                    <div class="glass-card rounded-xl p-3"><p class="heading-font text-xl md:text-2xl font-bold text-indigo-400">2</p><p class="text-[10px] md:text-xs text-gray-400">AI applications built</p></div>
+                    <div class="glass-card rounded-xl p-3"><p class="heading-font text-xl md:text-2xl font-bold text-indigo-400">3.5</p><p class="text-[10px] md:text-xs text-gray-400">GPA</p></div>
                 </div>
 
                 <div class="flex justify-center lg:justify-start gap-4 hero-reveal delay-3">
-                    <a href="#" class="social-btn flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-[#4f46e5] hover:shadow-[0_0_20px_rgba(79,70,229,0.6)] transition-all"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-btn flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-[#4f46e5] hover:shadow-[0_0_20px_rgba(79,70,229,0.6)] transition-all"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="social-btn flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-[#4f46e5] hover:shadow-[0_0_20px_rgba(79,70,229,0.6)] transition-all"><i class="fab fa-github"></i></a>
+                    <a href="https://github.com/nathan20061025" target="_blank" rel="noopener" aria-label="GitHub" class="social-btn flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-[#4f46e5] hover:shadow-[0_0_20px_rgba(79,70,229,0.6)] transition-all"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/nathan-fernando-se" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-btn flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-[#4f46e5] hover:shadow-[0_0_20px_rgba(79,70,229,0.6)] transition-all"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:nathanfernando045@gmail.com" aria-label="Email" class="social-btn flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-[#4f46e5] hover:shadow-[0_0_20px_rgba(79,70,229,0.6)] transition-all"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
 
         </div>
+        <a href="#what-i-do" class="scroll-cue" aria-label="Scroll to what I do"><span>Scroll</span><i class="fas fa-chevron-down"></i></a>
     </header>
+
+    <section id="what-i-do" class="px-4 md:px-8 max-w-7xl mx-auto pb-16 md:pb-24">
+        <p class="text-indigo-500 font-bold text-[10px] md:text-sm tracking-[0.3em] uppercase text-center mb-4 hero-reveal">What I do</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <div class="glass-card rounded-2xl p-6 text-center hero-reveal delay-1">
+                <i class="fas fa-robot text-2xl text-indigo-400 mb-3"></i>
+                <h3 class="heading-font font-bold text-lg mb-1">AI &amp; Automation</h3>
+                <p class="text-gray-400 text-xs md:text-sm">LLM integrations, workflow automation and AI-powered apps.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-6 text-center hero-reveal delay-2">
+                <i class="fas fa-plug text-2xl text-indigo-400 mb-3"></i>
+                <h3 class="heading-font font-bold text-lg mb-1">Backend &amp; API Engineering</h3>
+                <p class="text-gray-400 text-xs md:text-sm">REST APIs and integrations with .NET, ASP.NET Core and Angular.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-6 text-center hero-reveal delay-3">
+                <i class="fas fa-database text-2xl text-indigo-400 mb-3"></i>
+                <h3 class="heading-font font-bold text-lg mb-1">Database-Driven Systems</h3>
+                <p class="text-gray-400 text-xs md:text-sm">Reliable SQL Server and PostgreSQL systems built to stay online.</p>
+            </div>
+        </div>
+    </section>
 
     <script>
         window.addEventListener('load', () => {
@@ -334,6 +392,7 @@
                 if (href && href.includes('.html')) {
                     e.preventDefault();
                     document.getElementById('home').classList.add('blur-exit');
+                    document.getElementById('what-i-do').classList.add('blur-exit');
                     document.getElementById('navbar').classList.add('blur-exit');
                     document.getElementById('page-loader-overlay').style.opacity = '1';
                     setTimeout(() => {
@@ -366,5 +425,6 @@
             "retina_detect": true
         });
     </script>
+    <script src="polish.js"></script>
 </body>
 </html>
