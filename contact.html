@@ -74,9 +74,12 @@
         .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-radius: 50%; border-top-color: white; animation: spin 0.6s linear infinite; margin-right: 8px; }
         @keyframes spin { to { transform: rotate(360deg); } }
     </style>
-    <meta name="theme-color" content="#08080a">
+    <meta name="theme-color" content="#1E1B4B">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="polish.css">
+    <link rel="stylesheet" href="polish-extra.css">
 </head>
 <body class="loading">
 
@@ -146,8 +149,8 @@
             <!-- UPDATED: AJAX Form Submission - No redirect, no 404 error -->
             <form id="contactForm" class="space-y-4 max-w-xl mx-auto lg:mx-0">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input type="text" id="name" name="name" placeholder="Your Name" class="contact-input" required>
-                    <input type="email" id="email" name="email" placeholder="Your Email" class="contact-input" required>
+                    <input type="text" id="name" name="name" autocomplete="name" placeholder="Your Name" class="contact-input" required>
+                    <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="Your Email" class="contact-input" required>
                 </div>
                 <input type="text" id="subject" name="subject" placeholder="Subject" class="contact-input">
                 <textarea id="message" name="message" placeholder="Your Message" rows="4" class="contact-input" required></textarea>
@@ -325,5 +328,6 @@
         });
     </script>
     <script src="polish.js"></script>
+    <script src="polish-extra.js" defer></script>
 </body>
 </html>
