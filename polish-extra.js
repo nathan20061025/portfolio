@@ -62,7 +62,7 @@
             toast.textContent = msg; toast.classList.add('show');
             clearTimeout(tt); tt = setTimeout(function () { toast.classList.remove('show'); }, 2200);
         }
-        window.showToast = showToast;
+        if (typeof window.showToast !== "function") window.showToast = showToast;
 
         // --- Email: copy to clipboard with toast (Ctrl/Cmd/long-press aware: plain click still opens mail) ---
         d.querySelectorAll('a[href^="mailto:"]').forEach(function (a) {
@@ -141,7 +141,7 @@
         var items = [
             ['Home', 'index.html', 'Page'], ['About', 'about.html', 'Page'], ['Portfolio', 'portfolio.html', 'Page'],
             ['Tech Stack', 'techstack.html', 'Page'], ['Certificates', 'certificates.html', 'Page'], ['Contact', 'contact.html', 'Page'],
-            ['Download CV', 'Nathan_Fernando_CV_AI_Automation_Engineer.pdf', 'File'],
+            ['Download CV', 'Nathan_Fernando_CV_AI_Data_Engineer.pdf', 'File'],
             ['GitHub', 'https://github.com/nathan20061025', 'External'],
             ['LinkedIn', 'https://linkedin.com/in/nathan-fernando-se', 'External']
         ];

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Nathan Fernando - Software & AI Engineer</title>
+    <title>Projects | Nathan Fernando - AI & Data Engineer</title>
     <meta name="description" content="Projects by Nathan Fernando: multi-agent AI travel planner, computer vision food recognition, enterprise systems and full-stack applications.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -98,6 +98,8 @@
     <meta name="theme-color" content="#1E1B4B">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="canonical" href="https://nathanfernando.vercel.app/portfolio.html">
+    <meta property="og:url" content="https://nathanfernando.vercel.app/portfolio.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="polish.css">
     <link rel="stylesheet" href="polish-extra.css">
@@ -118,7 +120,7 @@
     <main id="main-content" class="relative min-h-screen px-4 md:px-8 max-w-7xl mx-auto pt-32 pb-24">
         <header class="text-center mb-12 reveal-element">
             <h1 class="heading-font text-5xl md:text-7xl font-bold mb-4">My <span class="shimmer-text">Projects</span></h1>
-            <p class="text-gray-400 max-w-2xl mx-auto">Explore my latest work in AI, web development, and mobile applications</p>
+            <p class="text-gray-400 max-w-2xl mx-auto">AI agents, computer vision, enterprise systems and web projects</p>
         </header>
 
         <div class="flex flex-wrap justify-center gap-4 mb-20 reveal-element">
@@ -129,7 +131,47 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
             
-            <!-- PROJECT 0: Multi-Agent Travel Planner AI -->
+            <!-- PROJECT: Motorcycle Unsafe-Movement Detection -->
+            <div class="project-card reveal-element">
+                <div class="preview-container">
+                    <div class="preview-content">
+                        <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-indigo-600/40 via-slate-900 to-cyan-600/30">
+                            <i class="fas fa-motorcycle text-6xl text-indigo-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Motorcycle Unsafe-Movement Detection</h3>
+                <p class="text-gray-400 text-sm mb-4">A traffic video analysis app that flags suspected wrong-way and crosswalk riding in traffic camera footage. Built with Python, FastAPI, YOLO, ByteTrack, SQLite and Docker, using object detection and tracking, movement analysis and rule-based checks.</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <div class="flex gap-2">
+                        <div class="tech-icon"><i class="fab fa-python text-yellow-400"></i></div>
+                        <div class="tech-icon"><i class="fas fa-eye text-cyan-400"></i></div>
+                        <div class="tech-icon"><i class="fab fa-docker text-blue-400"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECT: Vision-Based GUI Agent -->
+            <div class="project-card reveal-element">
+                <div class="preview-container">
+                    <div class="preview-content">
+                        <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-600/40 via-slate-900 to-indigo-600/40">
+                            <i class="fas fa-desktop text-6xl text-indigo-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Vision-Based GUI Agent <span class="text-xs font-bold text-indigo-300 align-middle ml-1">Final-year research &middot; in progress</span></h3>
+                <p class="text-gray-400 text-sm mb-4">A desktop agent that reads the screen, then clicks and types to finish web tasks, and checks after each step that the action worked. Built with Python, PyTorch, YOLO, Playwright, PyAutoGUI and PaddleOCR.</p>
+                <div class="flex items-center justify-between mt-auto">
+                    <div class="flex gap-2">
+                        <div class="tech-icon"><i class="fab fa-python text-yellow-400"></i></div>
+                        <div class="tech-icon"><i class="fas fa-robot text-indigo-400"></i></div>
+                        <div class="tech-icon"><i class="fas fa-eye text-cyan-400"></i></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJECT 0: TripMate AI -->
             <div class="project-card reveal-element">
                 <div class="preview-container">
                     <div class="preview-content">
@@ -138,8 +180,8 @@
                         </div>
                     </div>
                 </div>
-                <h3 class="text-2xl font-bold mb-2">Multi-Agent Travel Planner AI</h3>
-                <p class="text-gray-400 text-sm mb-4">An AI travel planning app where multiple cooperating agents research destinations, build itineraries and refine plans into a complete trip.</p>
+                <h3 class="text-2xl font-bold mb-2">TripMate AI</h3>
+                <p class="text-gray-400 text-sm mb-4">An AI travel planner where several agents plan flights, hotels and the whole trip from a plain-text request. Built with Python, FastAPI, LangGraph, LangChain, Groq and PostgreSQL, using a multi-agent workflow, API tool calls and saved chat state.</p>
                 <div class="flex items-center justify-between mt-auto">
                     <div class="flex gap-2">
                         <div class="tech-icon"><i class="fas fa-robot text-indigo-400"></i></div>
@@ -244,15 +286,15 @@
             <div class="project-card reveal-element" onmouseenter="playVideo(this)" onmouseleave="pauseVideo(this)">
                 <div class="preview-container">
                     <div class="preview-content">
-                        <img src="chef_ai.jpg" class="preview-image" alt="Smart Kitchen AI">
+                        <img src="chef_ai.jpg" class="preview-image" alt="AI Food Intelligence System">
                         <video class="preview-video" loop muted playsinline>
                             <source src="Smart Kitchen AI.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                 </div>
-                <h3 class="text-2xl font-bold mb-2">Smart Kitchen AI</h3>
-                <p class="text-gray-400 text-sm mb-4">A CNN-based food prediction system that identifies ingredients from images and suggests recipes using computer vision and deep learning.</p>
+                <h3 class="text-2xl font-bold mb-2">AI Food Intelligence System</h3>
+                <p class="text-gray-400 text-sm mb-4">A smart recipe and nutrition app that suggests healthy recipes from home ingredients, with full nutrition facts, using two-way matching (ingredients to recipes, meals to nutrition). Built with Python and HTML.</p>
                 <div class="flex items-center justify-between mt-auto">
                     <div class="flex gap-2">
                         <div class="tech-icon"><i class="fab fa-python text-yellow-400"></i></div>
@@ -349,6 +391,29 @@
                 </div>
             </div>
 
+        </div>
+
+        <header class="text-center mt-24 mb-10 reveal-element">
+            <h2 class="heading-font text-3xl md:text-5xl font-bold mb-3">Enterprise <span class="shimmer-text">Systems</span></h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-sm">Completed during my internship at Scienter Technologies</p>
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="glass-card rounded-2xl p-6 reveal-element">
+                <h3 class="heading-font font-bold text-lg mb-1">Destinity Container Maintenance System</h3>
+                <p class="text-gray-400 text-sm">Rebuilt the container maintenance platform with Angular and C# to make it faster and easier to grow. Wrote SQL Server stored procedures for live container tracking and filtering.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-6 reveal-element">
+                <h3 class="heading-font font-bold text-lg mb-1">Destinity Payroll System</h3>
+                <p class="text-gray-400 text-sm">Automated EPF/ETF file creation in C#, replacing a manual process, and improved leave calculations. Fixed bugs so payroll results are accurate.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-6 reveal-element">
+                <h3 class="heading-font font-bold text-lg mb-1">Client Maintenance System</h3>
+                <p class="text-gray-400 text-sm">Company system for managing clients and distributors. Built SSRS reports and SQL Server stored procedures, added Angular components, fixed bugs, and helped upgrade ASP.NET Core and Angular.</p>
+            </div>
+            <div class="glass-card rounded-2xl p-6 reveal-element">
+                <h3 class="heading-font font-bold text-lg mb-1">Sales Inventory &amp; Destinity Management Systems</h3>
+                <p class="text-gray-400 text-sm">Inventory and ERP platforms. Built ERP-connected features and Angular screens for inventory, sales and logistics tracking, wrote stored procedures, and made C# API endpoints and queries faster.</p>
+            </div>
         </div>
     </main>
 

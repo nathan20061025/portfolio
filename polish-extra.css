@@ -100,7 +100,7 @@ img[loading="lazy"]:not(.loaded) { background: linear-gradient(110deg, #12121a 3
 #cmdk li { padding: 0.75rem 0.9rem; border-radius: 10px; color: #cbd5e1; font-size: 14px; cursor: pointer; display: flex; justify-content: space-between; gap: 1rem; }
 #cmdk li.sel, #cmdk li:hover { background: rgba(109, 74, 255, 0.25); color: #fff; }
 #cmdk li small { color: #94a3b8; }
-#cmdk-hint { position: fixed; left: 20px; bottom: 20px; z-index: 9000; font-size: 11px; color: #94a3b8; padding: 0.4rem 0.7rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); cursor: pointer; display: none; }
+#cmdk-hint { position: fixed; right: 76px; bottom: 28px; z-index: 9000; font-size: 11px; color: #94a3b8; padding: 0.4rem 0.7rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); cursor: pointer; display: none; }
 @media (hover: hover) and (min-width: 1024px) { #cmdk-hint { display: block; } }
 
 /* --- Fluid sizing + overflow safety --- */
