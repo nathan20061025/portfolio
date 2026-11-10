@@ -141,7 +141,7 @@
         var items = [
             ['Home', 'index.html', 'Page'], ['About', 'about.html', 'Page'], ['Portfolio', 'portfolio.html', 'Page'],
             ['Tech Stack', 'techstack.html', 'Page'], ['Certificates', 'certificates.html', 'Page'], ['Contact', 'contact.html', 'Page'],
-            ['Download CV', 'Nathan_Fernando_CV_AI_Data_Engineer.pdf', 'File'],
+            ['Download CV', 'Nathan_Fernando_cv__Engineer.pdf', 'File'],
             ['GitHub', 'https://github.com/nathan20061025', 'External'],
             ['LinkedIn', 'https://linkedin.com/in/nathan-fernando-se', 'External']
         ];
