@@ -86,7 +86,7 @@
         footer.className = 'site-footer';
         footer.innerHTML =
             '<div class="inner">' +
-                '<div><p class="brand">Nathan Fernando</p><p class="role">AI &amp; Data Engineer</p></div>' +
+                '<div><p class="brand">Nathan Fernando</p><p class="role">Software &amp; AI Engineer</p></div>' +
                 '<div class="links">' +
                     '<a href="index.html">Home</a><a href="about.html">About</a>' +
                     '<a href="portfolio.html">Portfolio</a><a href="contact.html">Contact</a>' +
