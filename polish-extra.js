@@ -104,6 +104,19 @@
             }, { passive: true });
             d.addEventListener('mouseleave', function () { glow.classList.remove('on'); });
 
+            var scenes = d.querySelectorAll('.animation-container');
+            if (scenes.length) {
+                var sx = 0, sy = 0, sq = false;
+                d.addEventListener('mousemove', function (e) {
+                    sx = e.clientX / window.innerWidth - 0.5; sy = e.clientY / window.innerHeight - 0.5;
+                    if (sq) return; sq = true;
+                    requestAnimationFrame(function () {
+                        scenes.forEach(function (s) { s.style.setProperty('--px', sx.toFixed(3)); s.style.setProperty('--py', sy.toFixed(3)); });
+                        sq = false;
+                    });
+                }, { passive: true });
+            }
+
             var tiltSel = '.project-card, .cert-card, .tech-card';
             d.addEventListener('mousemove', function (e) {
                 var card = e.target.closest && e.target.closest(tiltSel);
@@ -111,6 +124,7 @@
                 var r = card.getBoundingClientRect();
                 var px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
                 card.classList.add('tilt-active');
+                card.style.setProperty('--tx', px.toFixed(3)); card.style.setProperty('--ty', py.toFixed(3));
                 card.style.transform = 'perspective(900px) rotateX(' + (-py * 5).toFixed(2) + 'deg) rotateY(' + (px * 6).toFixed(2) + 'deg) translateY(-4px)';
             }, { passive: true });
             d.addEventListener('mouseout', function (e) {
@@ -140,10 +154,10 @@
         // --- Command palette (Ctrl/Cmd + K) ---
         var items = [
             ['Home', 'index.html', 'Page'], ['About', 'about.html', 'Page'], ['Portfolio', 'portfolio.html', 'Page'],
-            ['Tech Stack', 'techstack.html', 'Page'], ['Certificates', 'certificates.html', 'Page'], ['Contact', 'contact.html', 'Page'],
+            ['Tech Stack', 'techstack.html', 'Page'], ['Skills', 'about.html#skills', 'Section'], ['Experience', 'about.html#experience', 'Section'], ['Engineering Toolkit', 'portfolio.html#ubuntu-toolkit', 'Section'], ['Open Source', 'portfolio.html#open-source', 'Section'], ['Education', 'about.html#education', 'Section'], ['Certificates', 'certificates.html', 'Page'], ['Contact', 'contact.html', 'Page'],
             ['Download CV', 'Nathan_Fernando_cv__Engineer.pdf', 'File'],
             ['GitHub', 'https://github.com/nathan20061025', 'External'],
-            ['LinkedIn', 'https://linkedin.com/in/nathan-fernando-se', 'External']
+            ['LinkedIn', 'https://www.linkedin.com/in/nathan-fernando-se', 'External']
         ];
         var pal = d.createElement('div');
         pal.id = 'cmdk'; pal.setAttribute('role', 'dialog'); pal.setAttribute('aria-modal', 'true'); pal.setAttribute('aria-label', 'Command palette');

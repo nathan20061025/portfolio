@@ -121,3 +121,123 @@ html, body { overflow-x: clip; }
     #cursor-glow, .aurora, body::after { display: none !important; }
     .nav-logo .n-stroke { animation: none; stroke-dashoffset: 0; }
 }
+
+/* --- In-page section nav + timeline (about / portfolio) --- */
+.section-nav { position: sticky; top: 88px; z-index: 40; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; padding: 0.5rem; margin: 0 auto 2.5rem; width: fit-content; max-width: 100%;
+    border-radius: 999px; background: rgba(12, 12, 18, 0.7); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(14px); }
+.section-nav a { padding: 0.5rem 0.9rem; min-height: 40px; display: inline-flex; align-items: center; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #cbd5e1; transition: background 0.3s, color 0.3s; }
+.section-nav a:hover, .section-nav a.on { background: rgba(109, 74, 255, 0.35); color: #fff; }
+.anchor-section { scroll-margin-top: 150px; }
+.sec-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(1.75rem, 4vw, 2.75rem); margin-bottom: 0.5rem; }
+.timeline { position: relative; padding-left: 1.5rem; border-left: 2px solid rgba(109, 74, 255, 0.4); display: grid; gap: 1.5rem; }
+.timeline > article { position: relative; }
+.timeline > article::before { content: ""; position: absolute; left: calc(-1.5rem - 7px); top: 0.4rem; width: 12px; height: 12px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 12px rgba(109, 74, 255, 0.8); }
+.badge { display: inline-block; padding: 0.15rem 0.6rem; border-radius: 999px; font-size: 10px; font-weight: 700; background: rgba(109, 74, 255, 0.18); border: 1px solid rgba(109, 74, 255, 0.45); color: #c7d2fe; }
+.badge.private { background: rgba(148, 163, 184, 0.12); border-color: rgba(148, 163, 184, 0.35); color: #cbd5e1; }
+.placeholder-link { opacity: 0.75; border: 1px dashed rgba(251, 191, 36, 0.6); border-radius: 8px; padding: 0.15rem 0.6rem; color: #fcd34d; font-size: 12px; font-weight: 700; cursor: not-allowed; }
+
+/* --- Smoothness: skip rendering work for off-screen sections --- */
+.site-footer, .anchor-section { content-visibility: auto; contain-intrinsic-size: auto 500px; }
+.project-card, .cert-card, .tech-card, .glass-card { backface-visibility: hidden; }
+
+/* --- Small phones: keep the navbar pill inside the screen, bigger tap targets --- */
+@media (max-width: 420px) {
+    #navbar > div { padding-left: 0.4rem !important; padding-right: 0.4rem !important; max-width: calc(100vw - 16px); }
+    #navbar a:not(.nav-logo) { padding: 0.5rem 0.4rem !important; }
+    #navbar div[class*="gap"], #navbar .nav-link-container { gap: 0.1rem !important; }
+    .nav-logo { margin: 0 0.1rem 0 0 !important; }
+    .nav-logo svg { width: 24px; height: 24px; }
+}
+.site-footer .links a, .site-footer .socials a { min-height: 44px; display: inline-flex; align-items: center; }
+.site-footer .links { gap: 0.25rem 1rem; }
+main a.flex.items-center, main a.inline-flex { min-height: 44px; }
+
+.nav-logo { min-height: 44px; min-width: 32px; justify-content: center; }
+
+/* ==========================================================
+   3D layer (GPU transforms only: cheap, no libraries)
+   ========================================================== */
+/* hero / stage scene follows the cursor by moving the camera, not the objects */
+.animation-container {
+    perspective-origin: calc(50% + var(--px, 0) * 30%) calc(50% + var(--py, 0) * 30%);
+    transition: perspective-origin 0.25s ease-out;
+}
+/* cards: lifted depth shadow that follows the tilt */
+.project-card.tilt-active, .cert-card.tilt-active, .tech-card.tilt-active {
+    box-shadow: calc(var(--tx, 0) * -34px) calc(var(--ty, 0) * -34px + 26px) 50px -14px rgba(109, 74, 255, 0.5), 0 0 0 1px rgba(167, 139, 250, 0.25);
+}
+/* 3D entrance: content swings up into place as it is revealed */
+@media (prefers-reduced-motion: no-preference) {
+    .reveal-element:not(.start-reveal) { transform: perspective(900px) translate3d(0, 28px, -60px) rotateX(10deg); transform-origin: 50% 100%; }
+    .reveal-element { transition-property: opacity, transform, filter; }
+}
+/* buttons feel pressed in 3D */
+@media (hover: hover) {
+    a[class*="rounded-xl"]:hover, .sub-nav-btn:hover { transform: translateY(-3px) translateZ(0); }
+}
+
+/* ==========================================================
+   Game layer (HUD, achievements, 3D scene canvas)
+   ========================================================== */
+#scene3d { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; display: block; }
+body.has-scene3d .aurora { opacity: 0.7; }
+
+#hud {
+    position: fixed; top: 20px; right: 20px; width: 232px; z-index: 45; padding: 0.8rem 0.9rem 0.9rem;
+    font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.06em; color: #cbd5e1;
+    background: rgba(10, 10, 20, 0.62); border: 1px solid rgba(109, 74, 255, 0.45); border-radius: 4px;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+    box-shadow: 0 0 24px rgba(109, 74, 255, 0.18); backdrop-filter: blur(8px); pointer-events: none;
+}
+#hud .hud-top { display: flex; align-items: center; gap: 0.45rem; color: #a78bfa; font-weight: 700; }
+#hud .hud-dot { width: 7px; height: 7px; border-radius: 50%; background: #34d399; box-shadow: 0 0 8px #34d399; animation: hudPulse 2s ease-in-out infinite; }
+@keyframes hudPulse { 50% { opacity: 0.35; } }
+#hud .hud-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; color: #fff; margin: 0.35rem 0 0.5rem; letter-spacing: 0; }
+#hud .hud-row { display: flex; justify-content: space-between; gap: 0.6rem; padding: 0.18rem 0; border-top: 1px dashed rgba(255, 255, 255, 0.08); }
+#hud .hud-row span { color: #94a3b8; }
+#hud .hud-row b { color: #e2e8f0; font-weight: 600; text-align: right; }
+#hud .hud-row b.ok { color: #34d399; }
+#hud .hud-xp { margin-top: 0.55rem; }
+#hud .hud-xp span { color: #94a3b8; }
+#hud .hud-xp i { display: block; height: 6px; margin-top: 0.3rem; background: rgba(255, 255, 255, 0.08); border-radius: 2px; overflow: hidden; }
+#hud .hud-xp u { display: block; height: 100%; width: 100%; transform: scaleX(0); transform-origin: 0 50%; background: linear-gradient(90deg, #6d4aff, #38bdf8); box-shadow: 0 0 10px rgba(56, 189, 248, 0.7); will-change: transform; }
+
+#achievements { position: fixed; left: 20px; bottom: 24px; z-index: 10025; display: grid; gap: 8px; pointer-events: none; }
+.ach { display: flex; align-items: center; gap: 0.7rem; padding: 0.65rem 0.9rem; min-width: 240px; color: #fff;
+    background: rgba(20, 16, 50, 0.92); border: 1px solid rgba(251, 191, 36, 0.6); border-radius: 6px;
+    box-shadow: 0 0 24px rgba(251, 191, 36, 0.2); transform: translateX(-120%); opacity: 0; transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s; }
+.ach.show { transform: none; opacity: 1; }
+.ach i { color: #fbbf24; font-size: 18px; }
+.ach small { display: block; font-size: 9px; letter-spacing: 0.15em; color: #fcd34d; }
+.ach b { font-size: 13px; }
+
+/* game-style corner brackets on cards */
+.project-card::before, .cert-card::before, .tech-card::before, .glass-card::before {
+    content: ""; position: absolute; inset: 10px; pointer-events: none; z-index: 2; opacity: 0.55; transition: opacity 0.3s, inset 0.3s;
+    background:
+        linear-gradient(#a78bfa, #a78bfa) top left / 14px 2px no-repeat, linear-gradient(#a78bfa, #a78bfa) top left / 2px 14px no-repeat,
+        linear-gradient(#a78bfa, #a78bfa) top right / 14px 2px no-repeat, linear-gradient(#a78bfa, #a78bfa) top right / 2px 14px no-repeat,
+        linear-gradient(#38bdf8, #38bdf8) bottom left / 14px 2px no-repeat, linear-gradient(#38bdf8, #38bdf8) bottom left / 2px 14px no-repeat,
+        linear-gradient(#38bdf8, #38bdf8) bottom right / 14px 2px no-repeat, linear-gradient(#38bdf8, #38bdf8) bottom right / 2px 14px no-repeat;
+}
+.project-card:hover::before, .cert-card:hover::before, .tech-card:hover::before, .glass-card:hover::before { opacity: 1; inset: 6px; }
+
+@media (prefers-reduced-motion: reduce) { #hud .hud-dot { animation: none; } }
+@media print { #hud, #achievements, #scene3d { display: none !important; } }
+
+/* while the 3D scene runs, skip the expensive blur-behind effect (it is barely visible over a dark canvas) */
+body.has-scene3d .glass-card, body.has-scene3d .project-card, body.has-scene3d .cert-card, body.has-scene3d .tech-card,
+body.has-scene3d #navbar > div, body.has-scene3d #hud, body.has-scene3d .section-nav, body.has-scene3d .icon-node, body.has-scene3d .hub {
+    -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+}
+body.has-scene3d .glass-card, body.has-scene3d .project-card, body.has-scene3d .cert-card, body.has-scene3d .tech-card { background-color: rgba(14, 16, 30, 0.78); }
+body.has-scene3d #navbar > div, body.has-scene3d .section-nav { background-color: rgba(12, 12, 22, 0.86) !important; }
+/* tighter, smaller brackets so they never touch card text */
+.project-card::before, .cert-card::before, .tech-card::before, .glass-card::before { inset: 5px; background-size: 10px 2px, 2px 10px, 10px 2px, 2px 10px, 10px 2px, 2px 10px, 10px 2px, 2px 10px; }
+.project-card:hover::before, .cert-card:hover::before, .tech-card:hover::before, .glass-card:hover::before { inset: 3px; }
+
+/* HUD shrinks to a slim progress bar once you scroll, so it never covers content */
+#hud { transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1), padding 0.35s; }
+#hud.compact { width: 170px; padding: 0.5rem 0.7rem 0.6rem; }
+#hud.compact .hud-name, #hud.compact .hud-row { display: none; }
+#hud.compact .hud-xp { margin-top: 0.3rem; }

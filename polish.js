@@ -86,14 +86,14 @@
         footer.className = 'site-footer';
         footer.innerHTML =
             '<div class="inner">' +
-                '<div><p class="brand">Nathan Fernando</p><p class="role">Software &amp; AI Engineer</p></div>' +
+                '<div><p class="brand">Nathan Fernando</p><p class="role">Junior Software Engineer</p></div>' +
                 '<div class="links">' +
                     '<a href="index.html">Home</a><a href="about.html">About</a>' +
-                    '<a href="portfolio.html">Portfolio</a><a href="contact.html">Contact</a>' +
+                    '<a href="portfolio.html">Portfolio</a><a href="about.html#experience">Experience</a><a href="portfolio.html#open-source">Open Source</a><a href="contact.html">Contact</a>' +
                 '</div>' +
                 '<div class="socials">' +
                     '<a href="https://github.com/nathan20061025" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>' +
-                    '<a href="https://linkedin.com/in/nathan-fernando-se" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>' +
+                    '<a href="https://www.linkedin.com/in/nathan-fernando-se" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>' +
                     '<a href="mailto:nathanfernando045@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>' +
                 '</div>' +
                 '<p class="copy">&copy; ' + year + ' Nathan Fernando. All rights reserved.</p>' +

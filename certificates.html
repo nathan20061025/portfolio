@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificates | Nathan Fernando - Software & AI Engineer</title>
+    <title>Certificates | Nathan Fernando - Junior Software Engineer</title>
     <meta name="description" content="Professional certificates and learning achievements of Nathan Fernando.">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap');
         
         body { background-color: #08080a; color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; margin: 0; overflow-x: hidden; width: 100%; }
         .heading-font { font-family: 'Space Grotesk', sans-serif; }
@@ -29,6 +27,7 @@
 
         /* --- 3D CERTIFICATE CARDS --- */
         .cert-card { background: rgba(17, 24, 39, 0.4); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 28px; padding: 1.5rem; transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; }
+        .cert-card-small { align-self: start; cursor: default; padding: 1.25rem 1.5rem; }
         .cert-card:hover { border-color: rgba(79, 70, 229, 0.6); transform: translateY(-8px); }
 
         .preview-container { perspective: 1000px; margin-bottom: 1.5rem; height: 220px; position: relative; overflow: hidden; border-radius: 16px; }
@@ -45,13 +44,19 @@
         .start-reveal { opacity: 1; transform: translateY(0); }
     </style>
     <meta name="theme-color" content="#1E1B4B">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&amp;family=Space+Grotesk:wght@500;700&amp;display=swap">
     <link rel="canonical" href="https://nathanfernando.vercel.app/certificates.html">
     <meta property="og:url" content="https://nathanfernando.vercel.app/certificates.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="polish.css">
     <link rel="stylesheet" href="polish-extra.css">
+    <link rel="stylesheet" href="tailwind.css">
 </head>
 <body>
     <div id="page-loader-overlay"></div>
@@ -83,7 +88,7 @@
             <div class="cert-card reveal-element" onclick="window.open('8812db1f-8248-4f2f-8356-e4ea27a4b926.pdf', '_blank')">
                 <div class="click-overlay"></div>
                 <div class="preview-container">
-                    <iframe src="8812db1f-8248-4f2f-8356-e4ea27a4b926.pdf#toolbar=0&navpanes=0&scrollbar=0" class="pdf-preview"></iframe>
+                    <iframe src="8812db1f-8248-4f2f-8356-e4ea27a4b926.pdf#toolbar=0&navpanes=0&scrollbar=0" class="pdf-preview" loading="lazy" title="Certificate preview" tabindex="-1"></iframe>
                 </div>
                 <div class="flex items-center gap-4">
                     <div class="p-3 bg-indigo-500/10 rounded-xl">
@@ -99,7 +104,7 @@
             <div class="cert-card reveal-element" onclick="window.open('OperatingSystemsBasicsUpdate20261020-21-d2onbn.pdf', '_blank')">
                 <div class="click-overlay"></div>
                 <div class="preview-container">
-                    <iframe src="OperatingSystemsBasicsUpdate20261020-21-d2onbn.pdf#toolbar=0&navpanes=0&scrollbar=0" class="pdf-preview"></iframe>
+                    <iframe src="OperatingSystemsBasicsUpdate20261020-21-d2onbn.pdf#toolbar=0&navpanes=0&scrollbar=0" class="pdf-preview" loading="lazy" title="Certificate preview" tabindex="-1"></iframe>
                 </div>
                 <div class="flex items-center gap-4">
                     <div class="p-3 bg-indigo-500/10 rounded-xl">
@@ -115,7 +120,7 @@
             <div class="cert-card reveal-element" onclick="window.open('certificate1.pdf', '_blank')">
                 <div class="click-overlay"></div>
                 <div class="preview-container">
-                    <iframe src="certificate1.pdf#toolbar=0&navpanes=0&scrollbar=0" class="pdf-preview"></iframe>
+                    <iframe src="certificate1.pdf#toolbar=0&navpanes=0&scrollbar=0" class="pdf-preview" loading="lazy" title="Certificate preview" tabindex="-1"></iframe>
                 </div>
                 <div class="flex items-center gap-4">
                     <div class="p-3 bg-indigo-500/10 rounded-xl">
@@ -131,7 +136,7 @@
             <div class="cert-card reveal-element" onclick="window.open('certificate2.pdf', '_blank')">
                 <div class="click-overlay"></div>
                 <div class="preview-container">
-                    <iframe src="certificate2.pdf#toolbar=0&navpanes=0&scrollbar=0" class="pdf-preview"></iframe>
+                    <iframe src="certificate2.pdf#toolbar=0&navpanes=0&scrollbar=0" class="pdf-preview" loading="lazy" title="Certificate preview" tabindex="-1"></iframe>
                 </div>
                 <div class="flex items-center gap-4">
                     <div class="p-3 bg-indigo-500/10 rounded-xl">
@@ -147,30 +152,19 @@
             <div class="cert-card reveal-element" onclick="window.open('certificate3.pdf', '_blank')">
                 <div class="click-overlay"></div>
                 <div class="preview-container">
-                    <iframe src="certificate3.pdf#toolbar=0&navpanes=0&scrollbar=0" class="pdf-preview"></iframe>
+                    <iframe src="certificate3.pdf#toolbar=0&navpanes=0&scrollbar=0" class="pdf-preview" loading="lazy" title="Certificate preview" tabindex="-1"></iframe>
                 </div>
                 <div class="flex items-center gap-4">
                     <div class="p-3 bg-indigo-500/10 rounded-xl">
                         <i class="fas fa-medal text-xl text-indigo-400"></i>
                     </div>
                     <div>
-                        <h4 class="font-bold text-base">Certificate of Completion</h4>
-                        <p class="text-xs text-gray-500">August 2026</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="cert-card reveal-element">
-                <div class="flex items-center gap-4">
-                    <div class="p-3 bg-indigo-500/10 rounded-xl"><i class="fas fa-medal text-xl text-indigo-400"></i></div>
-                    <div>
                         <h4 class="font-bold text-base">AI Generation Bootcamp</h4>
                         <p class="text-xs text-gray-400">STEMLINK &middot; 2026</p>
                     </div>
                 </div>
             </div>
-            <div class="cert-card reveal-element">
+            <div class="cert-card cert-card-small reveal-element">
                 <div class="flex items-center gap-4">
                     <div class="p-3 bg-indigo-500/10 rounded-xl"><i class="fas fa-medal text-xl text-indigo-400"></i></div>
                     <div>
@@ -179,7 +173,7 @@
                     </div>
                 </div>
             </div>
-            <div class="cert-card reveal-element">
+            <div class="cert-card cert-card-small reveal-element">
                 <div class="flex items-center gap-4">
                     <div class="p-3 bg-indigo-500/10 rounded-xl"><i class="fas fa-medal text-xl text-indigo-400"></i></div>
                     <div>
@@ -205,14 +199,14 @@
                     document.getElementById('main-content').classList.add('blur-exit');
                     document.getElementById('navbar').classList.add('blur-exit');
                     document.getElementById('page-loader-overlay').style.opacity = '1';
-                    setTimeout(() => window.location.href = href, 500);
+                    setTimeout(() => window.location.href = href, 280);
                 }
             });
         });
 
         particlesJS("particles-js", { 
             "particles": { 
-                "number": { "value": 30, "density": { "enable": true, "value_area": 800 } }, 
+                "number": { "value": 20, "density": { "enable": true, "value_area": 800 } }, 
                 "color": { "value": "#6366f1" }, 
                 "opacity": { "value": 0.3 }, 
                 "size": { "value": 2 }, 
@@ -224,5 +218,6 @@
     </script>
     <script src="polish.js"></script>
     <script src="polish-extra.js" defer></script>
+    <script src="game3d.js" defer></script>
 </body>
 </html>

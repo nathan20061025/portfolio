@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Stack | Nathan Fernando - Software & AI Engineer</title>
+    <title>Tech Stack | Nathan Fernando - Junior Software Engineer</title>
     <meta name="description" content="Tech stack of Nathan Fernando: .NET, Angular, Python, TensorFlow, LLM integrations, SQL Server, PostgreSQL and AWS.">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap');
         
         body { background-color: #08080a; color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; margin: 0; overflow-x: hidden; width: 100%; }
         .heading-font { font-family: 'Space Grotesk', sans-serif; }
@@ -46,13 +44,19 @@
         .start-reveal { opacity: 1; transform: translateY(0); }
     </style>
     <meta name="theme-color" content="#1E1B4B">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&amp;family=Space+Grotesk:wght@500;700&amp;display=swap">
     <link rel="canonical" href="https://nathanfernando.vercel.app/techstack.html">
     <meta property="og:url" content="https://nathanfernando.vercel.app/techstack.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="polish.css">
     <link rel="stylesheet" href="polish-extra.css">
+    <link rel="stylesheet" href="tailwind.css">
 </head>
 <body>
     <div id="page-loader-overlay"></div>
@@ -80,6 +84,39 @@
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+            <div class="tech-card reveal-element">
+                <i class="fab fa-ubuntu text-5xl text-orange-500 mb-4"></i>
+                <p class="font-bold">Linux</p>
+            </div>
+            <div class="tech-card reveal-element">
+                <i class="fas fa-gear text-5xl text-orange-300 mb-4"></i>
+                <p class="font-bold">Rust</p>
+            </div>
+            <div class="tech-card reveal-element">
+                <i class="fas fa-bolt text-5xl text-cyan-400 mb-4"></i>
+                <p class="font-bold">Go</p>
+            </div>
+            <div class="tech-card reveal-element">
+                <i class="fas fa-terminal text-5xl text-green-400 mb-4"></i>
+                <p class="font-bold">Bash</p>
+            </div>
+            <div class="tech-card reveal-element">
+                <i class="fas fa-mobile-screen text-5xl text-sky-400 mb-4"></i>
+                <p class="font-bold">Flutter / Dart</p>
+            </div>
+            <div class="tech-card reveal-element">
+                <i class="fas fa-box text-5xl text-amber-400 mb-4"></i>
+                <p class="font-bold">Debian &amp; Snap</p>
+            </div>
+            <div class="tech-card reveal-element">
+                <i class="fas fa-bug text-5xl text-red-400 mb-4"></i>
+                <p class="font-bold">GDB / strace / Valgrind</p>
+            </div>
+            <div class="tech-card reveal-element">
+                <i class="fas fa-code-branch text-5xl text-violet-400 mb-4"></i>
+                <p class="font-bold">GitHub Actions / CI/CD</p>
+            </div>
+
             <div class="tech-card reveal-element" style="transition-delay: 0.1s;">
                 <i class="fab fa-python text-5xl text-yellow-500 mb-4"></i>
                 <p class="font-bold">Python</p>
@@ -254,14 +291,14 @@
                     document.getElementById('main-content').classList.add('blur-exit');
                     document.getElementById('navbar').classList.add('blur-exit');
                     document.getElementById('page-loader-overlay').style.opacity = '1';
-                    setTimeout(() => window.location.href = href, 500);
+                    setTimeout(() => window.location.href = href, 280);
                 }
             });
         });
 
         particlesJS("particles-js", { 
             "particles": { 
-                "number": { "value": 40, "density": { "enable": true, "value_area": 800 } }, 
+                "number": { "value": 22, "density": { "enable": true, "value_area": 800 } }, 
                 "color": { "value": "#6366f1" }, 
                 "opacity": { "value": 0.2 }, 
                 "size": { "value": 2 }, 
@@ -273,5 +310,6 @@
     </script>
     <script src="polish.js"></script>
     <script src="polish-extra.js" defer></script>
+    <script src="game3d.js" defer></script>
 </body>
 </html>

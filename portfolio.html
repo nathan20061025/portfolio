@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Nathan Fernando - Software & AI Engineer</title>
+    <title>Projects | Nathan Fernando - Junior Software Engineer</title>
     <meta name="description" content="Projects by Nathan Fernando: multi-agent AI travel planner, computer vision food recognition, enterprise systems and full-stack applications.">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap');
         
         body { background-color: #08080a; color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; margin: 0; overflow-x: hidden; width: 100%; }
         .heading-font { font-family: 'Space Grotesk', sans-serif; }
@@ -96,13 +94,19 @@
         }
     </style>
     <meta name="theme-color" content="#1E1B4B">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-solid-900.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/webfonts/fa-brands-400.woff2" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&amp;family=Space+Grotesk:wght@500;700&amp;display=swap">
     <link rel="canonical" href="https://nathanfernando.vercel.app/portfolio.html">
     <meta property="og:url" content="https://nathanfernando.vercel.app/portfolio.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="polish.css">
     <link rel="stylesheet" href="polish-extra.css">
+    <link rel="stylesheet" href="tailwind.css">
 </head>
 <body>
     <div id="page-loader-overlay"></div>
@@ -129,7 +133,15 @@
             <a href="techstack.html" class="sub-nav-btn transition-link"><i class="fas fa-layer-group"></i> Tech Stack</a>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+        <nav class="section-nav px-2" aria-label="Projects page sections">
+            <a href="#projects">Projects</a><a href="#ubuntu-toolkit">Engineering Toolkit</a><a href="#enterprise">Enterprise</a><a href="#open-source">Open Source</a>
+        </nav>
+
+        <header id="projects" class="anchor-section text-center mb-10 reveal-element">
+            <h2 class="heading-font text-3xl md:text-5xl font-bold mb-3"><span class="shimmer-text">Projects</span></h2>
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-24">
             
             <!-- PROJECT: Motorcycle Unsafe-Movement Detection -->
             <div class="project-card reveal-element">
@@ -148,6 +160,9 @@
                         <div class="tech-icon"><i class="fas fa-eye text-cyan-400"></i></div>
                         <div class="tech-icon"><i class="fab fa-docker text-blue-400"></i></div>
                     </div>
+                    <a href="https://github.com/nathan20061025/motorcycle-analysis" target="_blank" rel="noopener" class="github-link text-sm font-bold text-gray-300 hover:text-white flex items-center gap-2">
+                        <i class="fab fa-github"></i> Source Code
+                    </a>
                 </div>
             </div>
 
@@ -286,9 +301,9 @@
             <div class="project-card reveal-element" onmouseenter="playVideo(this)" onmouseleave="pauseVideo(this)">
                 <div class="preview-container">
                     <div class="preview-content">
-                        <img src="chef_ai.jpg" class="preview-image" alt="AI Food Intelligence System">
-                        <video class="preview-video" loop muted playsinline>
-                            <source src="Smart Kitchen AI.mp4" type="video/mp4">
+                        <img src="chef_ai.webp" class="preview-image" alt="AI Food Intelligence System">
+                        <video class="preview-video" loop muted playsinline preload="none" poster="chef_ai.webp">
+                            <source src="smart-kitchen-ai.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -311,7 +326,7 @@
             <div class="project-card reveal-element">
                 <div class="preview-container">
                     <div class="preview-content">
-                        <img src="Deshakthi_ss.jpg" class="preview-image" alt="Deshakthi Lanka">
+                        <img src="Deshakthi_ss.webp" class="preview-image" alt="Deshakthi Lanka">
                     </div>
                 </div>
                 <h3 class="text-2xl font-bold mb-2">Deshakthi Lanka System</h3>
@@ -331,7 +346,7 @@
             <div class="project-card reveal-element">
                 <div class="preview-container">
                     <div class="preview-content">
-                        <img src="Fast-Track-Logistics.png" class="preview-image" alt="Fast Track Logistics ">
+                        <img src="Fast-Track-Logistics.webp" class="preview-image" alt="Fast Track Logistics ">
                     </div>
                 </div>
                 <h3 class="text-2xl font-bold mb-2">Fast Track Logistics</h3>
@@ -352,7 +367,7 @@
             <div class="project-card reveal-element">
                 <div class="preview-container">
                     <div class="preview-content">
-                        <img src="virtual_pal.jpeg" class="preview-image" alt="Virtual-Pal">
+                        <img src="virtual_pal.webp" class="preview-image" alt="Virtual-Pal">
                     </div>
                 </div>
                 <h3 class="text-2xl font-bold mb-2">Virtual-Pal</h3>
@@ -373,7 +388,7 @@
             <div class="project-card reveal-element">
                 <div class="preview-container">
                     <div class="preview-content">
-                        <img src="evanz.jpg" class="preview-image" alt="EVANZ Clothing">
+                        <img src="evanz.webp" class="preview-image" alt="EVANZ Clothing">
                     </div>
                 </div>
                 <h3 class="text-2xl font-bold mb-2">EVANZ Clothing</h3>
@@ -393,28 +408,122 @@
 
         </div>
 
-        <header class="text-center mt-24 mb-10 reveal-element">
+        <header id="ubuntu-toolkit" class="anchor-section text-center mb-10 reveal-element">
+            <h2 class="heading-font text-3xl md:text-5xl font-bold mb-3">Engineering <span class="shimmer-text">Toolkit</span></h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-sm">Command-line and desktop tools, packaging, CI/CD and debugging work.</p>
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div class="project-card reveal-element">
+                <div class="preview-container">
+                    <div class="preview-content">
+                        <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-indigo-600/40 via-slate-900 to-purple-600/30" aria-hidden="true">
+                            <i class="fas fa-microchip text-6xl text-indigo-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">RustPulse</h3>
+                <p class="text-gray-400 text-sm mb-4">Linux system monitoring CLI. Tracks CPU, memory, disk, network and processes with alerts and JSON/CSV reports.</p>
+                <div class="chip-row mb-4" style="justify-content:flex-start"><span class="chip">Rust</span><span class="chip">Cargo</span><span class="chip">Linux /proc</span></div>
+            </div>
+            <div class="project-card reveal-element">
+                <div class="preview-container">
+                    <div class="preview-content">
+                        <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-indigo-600/40 via-slate-900 to-purple-600/30" aria-hidden="true">
+                            <i class="fas fa-satellite-dish text-6xl text-indigo-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">GoWatch</h3>
+                <p class="text-gray-400 text-sm mb-4">Concurrent server health monitor. HTTP/TCP checks, latency and uptime tracking, incident history and REST API.</p>
+                <div class="chip-row mb-4" style="justify-content:flex-start"><span class="chip">Go</span><span class="chip">SQLite</span></div>
+            </div>
+            <div class="project-card reveal-element">
+                <div class="preview-container">
+                    <div class="preview-content">
+                        <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-indigo-600/40 via-slate-900 to-purple-600/30" aria-hidden="true">
+                            <i class="fas fa-desktop text-6xl text-indigo-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">PulseDesk</h3>
+                <p class="text-gray-400 text-sm mb-4">Flutter Linux desktop dashboard for CPU, memory, disk, network and process data.</p>
+                <div class="chip-row mb-4" style="justify-content:flex-start"><span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">SQLite</span></div>
+            </div>
+            <div class="project-card reveal-element">
+                <div class="preview-container">
+                    <div class="preview-content">
+                        <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-indigo-600/40 via-slate-900 to-purple-600/30" aria-hidden="true">
+                            <i class="fas fa-box text-6xl text-indigo-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">LinuxPack</h3>
+                <p class="text-gray-400 text-sm mb-4">Debian and Snap packaging. Packages RustPulse as installable .deb and .snap packages.</p>
+                <div class="chip-row mb-4" style="justify-content:flex-start"><span class="chip">cargo-deb</span><span class="chip">Snapcraft</span></div>
+            </div>
+            <div class="project-card reveal-element">
+                <div class="preview-container">
+                    <div class="preview-content">
+                        <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-indigo-600/40 via-slate-900 to-purple-600/30" aria-hidden="true">
+                            <i class="fas fa-code-branch text-6xl text-indigo-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">OpenBuild</h3>
+                <p class="text-gray-400 text-sm mb-4">CI/CD pipelines. GitHub Actions workflows that build, lint, test and package Rust, Go, Flutter and C projects.</p>
+                <div class="chip-row mb-4" style="justify-content:flex-start"><span class="chip">GitHub Actions</span><span class="chip">YAML</span></div>
+            </div>
+            <div class="project-card reveal-element">
+                <div class="preview-container">
+                    <div class="preview-content">
+                        <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-indigo-600/40 via-slate-900 to-purple-600/30" aria-hidden="true">
+                            <i class="fas fa-bug text-6xl text-indigo-300"></i>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">LinuxDebugLab</h3>
+                <p class="text-gray-400 text-sm mb-4">Debugging lab. Diagnosed and fixed segfaults, memory leaks and failed system calls in C.</p>
+                <div class="chip-row mb-4" style="justify-content:flex-start"><span class="chip">C</span><span class="chip">GDB</span><span class="chip">strace</span><span class="chip">Valgrind</span><span class="chip">GCC</span></div>
+            </div>
+        </div>
+
+        <header id="enterprise" class="anchor-section text-center mt-24 mb-10 reveal-element">
             <h2 class="heading-font text-3xl md:text-5xl font-bold mb-3">Enterprise <span class="shimmer-text">Systems</span></h2>
             <p class="text-gray-400 max-w-2xl mx-auto text-sm">Completed during my internship at Scienter Technologies</p>
         </header>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="glass-card rounded-2xl p-6 reveal-element">
                 <h3 class="heading-font font-bold text-lg mb-1">Destinity Container Maintenance System</h3>
+                <span class="badge private mb-2">Private / company code</span>
                 <p class="text-gray-400 text-sm">Rebuilt the container maintenance platform with Angular and C# to make it faster and easier to grow. Wrote SQL Server stored procedures for live container tracking and filtering.</p>
             </div>
             <div class="glass-card rounded-2xl p-6 reveal-element">
                 <h3 class="heading-font font-bold text-lg mb-1">Destinity Payroll System</h3>
+                <span class="badge private mb-2">Private / company code</span>
                 <p class="text-gray-400 text-sm">Automated EPF/ETF file creation in C#, replacing a manual process, and improved leave calculations. Fixed bugs so payroll results are accurate.</p>
             </div>
             <div class="glass-card rounded-2xl p-6 reveal-element">
                 <h3 class="heading-font font-bold text-lg mb-1">Client Maintenance System</h3>
+                <span class="badge private mb-2">Private / company code</span>
                 <p class="text-gray-400 text-sm">Company system for managing clients and distributors. Built SSRS reports and SQL Server stored procedures, added Angular components, fixed bugs, and helped upgrade ASP.NET Core and Angular.</p>
             </div>
             <div class="glass-card rounded-2xl p-6 reveal-element">
                 <h3 class="heading-font font-bold text-lg mb-1">Sales Inventory &amp; Destinity Management Systems</h3>
+                <span class="badge private mb-2">Private / company code</span>
                 <p class="text-gray-400 text-sm">Inventory and ERP platforms. Built ERP-connected features and Angular screens for inventory, sales and logistics tracking, wrote stored procedures, and made C# API endpoints and queries faster.</p>
             </div>
         </div>
+    
+        <section id="open-source" class="anchor-section mt-24 max-w-4xl mx-auto">
+            <h2 class="sec-title text-center">Open <span class="shimmer-text">Source</span></h2>
+            <p class="text-gray-300 text-center mb-6">I fix bugs and improve documentation, and I send my changes as pull requests on GitHub.</p>
+            <ul class="grid gap-3">
+                <!-- Add pull request links under each repo when ready -->
+                <li class="glass-card rounded-xl p-4 text-sm"><a href="https://github.com/nathan20061025/wso2-student-marks-api" target="_blank" rel="noopener" class="font-bold text-indigo-300 hover:text-white inline-flex items-center gap-2"><i class="fab fa-github" aria-hidden="true"></i> wso2-student-marks-api</a></li>
+                <li class="glass-card rounded-xl p-4 text-sm"><a href="https://github.com/nathan20061025/docs-is" target="_blank" rel="noopener" class="font-bold text-indigo-300 hover:text-white inline-flex items-center gap-2"><i class="fab fa-github" aria-hidden="true"></i> docs-is</a></li>
+                <li class="glass-card rounded-xl p-4 text-sm"><a href="https://github.com/nathan20061025/carbon-identity-framework" target="_blank" rel="noopener" class="font-bold text-indigo-300 hover:text-white inline-flex items-center gap-2"><i class="fab fa-github" aria-hidden="true"></i> carbon-identity-framework</a></li>
+            </ul>
+        </section>
     </main>
 
     <script>
@@ -448,7 +557,7 @@
                     document.getElementById('main-content').classList.add('blur-exit');
                     document.getElementById('navbar').classList.add('blur-exit');
                     document.getElementById('page-loader-overlay').style.opacity = '1';
-                    setTimeout(() => window.location.href = href, 500);
+                    setTimeout(() => window.location.href = href, 280);
                 }
             });
         });
@@ -456,7 +565,7 @@
         // Particles.js background configuration
         particlesJS("particles-js", { 
             "particles": { 
-                "number": { "value": 30, "density": { "enable": true, "value_area": 800 } }, 
+                "number": { "value": 20, "density": { "enable": true, "value_area": 800 } }, 
                 "color": { "value": "#6366f1" }, 
                 "opacity": { "value": 0.3 }, 
                 "size": { "value": 2 }, 
@@ -468,5 +577,6 @@
     </script>
     <script src="polish.js"></script>
     <script src="polish-extra.js" defer></script>
+    <script src="game3d.js" defer></script>
 </body>
 </html>
